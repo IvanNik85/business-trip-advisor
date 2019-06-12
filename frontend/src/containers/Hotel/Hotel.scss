@@ -1,0 +1,30 @@
+@import "../../index.scss";
+
+.hotelDiv{
+    .hotelHeader{
+        border:1px solid black;
+    }
+
+    .hotelInfo{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        border:1px solid black;
+
+        .hInfoLeft{
+            width: 50%;
+            text-align: center;
+        }
+        .hInfoRight{
+           width: 50%;
+           text-align: center;
+        }
+    }
+    .hotelReviews {
+        .reviewsHeder{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+}

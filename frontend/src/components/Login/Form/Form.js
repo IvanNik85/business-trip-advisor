@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import InputField from './Input'
 import Button from '../../UI/Button/Button'
+
 import './Form.scss';
 
  const Form = (props)=> {
@@ -10,9 +11,8 @@ import './Form.scss';
 
     let {title, classes,buttontext}=props
 
-    //button onClick calls fech or axius and sends {name:name, email:email,password :password} ili tako nesto
-    
-    
+    //button onClick calls fecth or axios and sends {name:name, email:email,password :password} ili tako nesto
+   
     return (
        
         <div className={['form-container', classes].join(" ")}>
