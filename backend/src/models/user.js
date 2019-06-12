@@ -44,7 +44,7 @@ const userSchema = new mongoose.Schema(
 // Create new jsonwebtoken for user
 userSchema.methods.createJWT = function () {
   const token = jwt.sign({ _id: this._id }, JSON.parse(
-    fs.readFileSync(path.join(__dirname, "../../../appconfig.json"))
+    fs.readFileSync(path.join(__dirname, "../../appconfig.json"))
   ).jwtSecret);
   this.tokens.push({token});
   return token;
