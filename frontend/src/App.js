@@ -1,6 +1,6 @@
 import React from 'react';
-import Layout from './UI/Layout/Layout';
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import Layout from './components/UI/Layout/Layout'
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from './containers/Home/Home';
 import CityInfo from './containers/CityInfo/CityInfo';
 import ChosenCity from './containers/ChosenCity/ChosenCity';
