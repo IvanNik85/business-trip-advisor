@@ -13,7 +13,7 @@ notifikacije za admina
 
 # pokretanje mongodb
 
-\Users\CODE.DESKTOP-MCSD2V1\Desktop\bta-code\backend\mongodb\bin\mongod --dbpath=\Users\CODE.DESKTOP-MCSD2V1\Desktop\bta-code\backend\mongodb-data
+\Users\CODE.DESKTOP-MCSD2V1\Desktop\bta-code\mongodb\bin\mongod --dbpath=\Users\CODE.DESKTOP-MCSD2V1\Desktop\bta-code\mongodb-data
 
 ## frontend
 predlog za login stranu: https://www.youtube.com/watch?v=mUdo6w87rh4
