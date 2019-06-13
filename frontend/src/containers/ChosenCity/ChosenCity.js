@@ -7,22 +7,20 @@ export default class ChosenCity extends Component {
   state = {
     modalShow: false
   };
-  modalOpenHandler = () => {
-    this.setState({ modalShow: true });
+  modalToggler = () => {
+    this.setState(prevState => {return{ modalShow: !prevState }});
   };
 
-  modalClosedHandler = () => {
-    this.setState({ modalShow: false });
-  };
+
 
   render() {
     return (
       <div>
-        <p onClick={this.modalOpenHandler}>Chosen city</p>
+        <p onClick={this.modalToggler}>Chosen city</p>
         <Modal
           style={{ "z-index": 50 }}
           show={this.state.modalShow}
-          clicked={this.modalClosedHandler}
+          clicked={this.modalToggler}
         >
           <feedbackTextarea />
           Modal{" "}
