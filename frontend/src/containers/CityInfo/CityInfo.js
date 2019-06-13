@@ -1,46 +1,96 @@
-
 import "./CityInfo.scss";
- import React from 'react'
- import {Link} from 'react-router-dom'
- 
- export default function CityInfo(props) {
-     const {cityName} = props
-     return (
-         <div className='cityDiv'>
+import React from "react";
+import { Link } from "react-router-dom";
+import Feedback from "../../components/Feedback/Feedback";
+import ShowHotel from "../../components/Select/ShowHotel";
+import faker from "faker";
 
-<div className='cityHeader'>
-    
-    <div className='cHeaderLeft'>
-    <h3>Ocu da nadjem info za grad: </h3>
-    {'selekt komponenta'}
- 
+export default function CityInfo(props) {
+  const { cityName } = props;
+  return (
+    <div className="cityDiv">
+      <div className="cityHeader">
+        <div className="cHeaderLeft">
+          <h3>Ocu da nadjem info za grad: </h3>
 
+          {"selekt komponenta"}
+          <h1>{cityName}City</h1>
+        </div>
+        <div className="cHeaderRight">
+          <a href="#accomodation"> ACCOMODATION</a>
+          <a href="#transport">TRANSPORT</a>
+          <a href="#citylife">CITYLIFE</a>
+        </div>
+      </div>
+
+      <div className="aInfoDiv">
+        <div className="flex">
+          <h2>Accomodation</h2>
+          <h6>Our top rated accomodations</h6>
+        </div>
+        <div className="flex">
+          <Link to="/accomodation">SHOW ALL &rArr;</Link>
+        </div>
+
+        <div className="flex">{"weder componenta"}</div>
+      </div>
+
+      <div
+        className="cityInfo"
+        id="accomodation"
+        style={{
+          height: "100vh",
+          backgroundColor: "grey",
+          border: "1px solid black"
+        }}
+      >
+        <div className="cInfoLeft">
+          <ShowHotel
+            name={faker.address.streetAddress()}
+            city={faker.address.city()}
+            text={faker.lorem.paragraph()}
+            img={faker.img}
+            alt={faker.address.zipCode()}
+          />
+          {"Map list hotela sa ocenama komponenta"}
+        </div>
+        <div className="cInfoRight">{"Google Map"}</div>
+      </div>
+
+      <div
+        className=""
+        id="transport"
+        style={{
+          height: "20vh",
+          backgroundColor: "aqua",
+          border: "1px solid black"
+        }}
+      >
+        {"transport ikonice komponenta"}
+      </div>
+      <div
+        className=""
+        id="citylife"
+        style={{
+          height: "20vh",
+          backgroundColor: "grey",
+          border: "1px solid black"
+        }}
+      >
+        {"citylife ikonice komponenta"}
+      </div>
+      <div className="hotelReviews">
+        <div className="reviewsHeder">
+          <h2>Reviews</h2>
+          {"sort komponenta"}
+          <i
+            className="fas fa-comment-medical"
+            onClick={() => console.log("rade ikon")}
+          />
+        </div>
+
+        <Feedback />
+      </div>
     </div>
-    <div  className='cHeaderRight'>
-<Link to='#accomodation'> ACCOMODATION</Link>
-<Link to='#'>TRANSPORT</Link>
-<Link to='#'>CITYLIFE</Link>
-
-    </div>
-</div>
-<div className='cityInfo' id='accomodation'>
-    <div></div>
-    <div></div>
-</div>
-<div className=''></div>
-<div className=''></div>
-<div className=''></div>
-<div className=''></div>
-
-
-
-
-
-
-
-
-             
-         </div>
-     )
- }
- 
+  );
+}

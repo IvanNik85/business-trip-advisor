@@ -1,0 +1,32 @@
+@import "../../index.scss";
+
+.accomDiv {
+  .accomSelect {
+    border: 1px solid black;
+  }
+  .accomInfo {
+    display: flex;
+    height: 100vh;
+
+    .accomList {
+      border: 1px solid black;
+      flex: 2;
+      //   display: flex;
+      .accomUnit {
+        display: flex;
+        .accomListLeft {
+          border: 1px solid black;
+          flex: 2;
+        }
+        .accomListRight {
+          border: 1px solid black;
+          flex: 1;
+        }
+      }
+    }
+    .accomMap {
+      border: 1px solid black;
+      flex: 1;
+    }
+  }
+}

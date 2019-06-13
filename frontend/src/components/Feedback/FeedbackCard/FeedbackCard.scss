@@ -1,0 +1,64 @@
+@import "../../../index.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Raleway", sans-serif;
+}
+.feedbackCard {
+  width: 430px;
+  /* height: 300px; */
+  padding: 15px 10px 20px;
+  background-color: #fff;
+  border: 1px solid black;
+  margin: 15px;
+}
+#userImg {
+  display: inline-block;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  margin: 10px;
+}
+.nameTitleBar {
+  width: 100%;
+  display: flex;
+}
+.nameTitle {
+  width: 80%;
+  padding-top: 8px;
+  padding-left: 15px;
+}
+.nameTitle h3 {
+  padding-bottom: 5px;
+}
+.feedbackCard p {
+  padding: 10px 20px 15px;
+  text-align: justify;
+  font-size: 15px;
+}
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#commentsNumber {
+  display: flex;
+  align-items: center;
+  margin-left: 15px;
+}
+#commentsNumber p {
+  padding: 7px;
+}
+#commentsNumber i {
+  display: block;
+  font-size: 20px;
+  color: red;
+}
+#readMore {
+  text-decoration: none;
+  margin-right: 15px;
+  font-size: 14px;
+  color: #8e8585;
+}
