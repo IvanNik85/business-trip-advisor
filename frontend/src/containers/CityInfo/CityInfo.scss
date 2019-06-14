@@ -1,36 +1,46 @@
 @import "../../index.scss";
-
-.aInfoDiv {
-  border: 1px solid red;
-  display: flex;
-  align-items: center;
-  .aInfoLeft {
-    flex: 1;
+.cityDiv {
+  .cityHeader {
+    display: flex;
+    .cHeaderLeft {
+      display: flex;
+      flex: 1;
+    }
+    .cHeaderRight {
+      flex: 1;
+    }
   }
-  .aInfoRight {
-    flex: 1;
+  .aInfoDiv {
+    border: 1px solid red;
+    display: flex;
+    align-items: center;
+    .aInfoLeft {
+      flex: 1;
+    }
+    .aInfoRight {
+      flex: 1;
+    }
+  }
+  .cityInfo {
+    display: flex;
+    height: 100vh;
+    background-color: grey;
+    border: 1px solid black;
+
+    .cInfoLeft {
+      flex: 2;
+    }
+    .cInfoRight {
+      flex: 1;
+    }
+  }
+  .hotelReviews {
+    .reviewsHeder {
+      display: flex;
+    }
   }
 }
 
-.cityHeader {
-  display: flex;
-  .cHeaderLeft {
-    flex: 1;
-  }
-  .cHeaderRight {
-    flex: 1;
-  }
-}
-
-.cityInfo {
-  display: flex;
-  .cInfoLeft {
-    flex: 2;
-  }
-  .cInfoRight {
-    flex: 1;
-  }
-}
 .flex {
   flex: 1;
 }

@@ -1,0 +1,22 @@
+.cityLife {
+  background-color: rgba(86, 66, 86, 1);
+  height: 30vh;
+  width: 100%;
+  text-align: center;
+
+  h1 {
+    color: #fff;
+    text-align: center;
+  }
+
+  .cityLifestyle {
+    display: flex;
+    justify-content: center;
+
+    i {
+      color: #fff;
+      font-size: 25px;
+      margin: 25px;
+    }
+  }
+}

@@ -4,7 +4,7 @@ import "./ChosenCityLifeIcon.scss";
 function ChosenCityLifeIcon() {
   return (
     <div className="chosenIcon">
-      <i class="fas fa-university" />
+      <i className="fas fa-university" />
     </div>
   );
 }

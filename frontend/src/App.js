@@ -12,14 +12,24 @@ import Home from "./containers/Home/Home";
 
 class App extends Component {
   state = {
+    hotelId: "",
     hotel: {
-      title: faker.fake("{{name.title}}"),
-      subtitle: faker.fake("{{random.words}}"),
-      img: faker.fake("{{image.imageUrl}}"),
-      text: faker.fake("{{lorem.paragraph}}")
-    }
+      data: {
+        title: "Hilton",
+        subtitle: "lallala",
+        text: "kalkalkajkjskjs",
+        img: faker.fake("{{image.image}}"),
+        score: 9
+      }
+    },
+    cityList: ["Belgrade", "Paris", "London", "Surdulica", "Paramaribo"]
+  };
+
+  setHotelID = value => {
+    this.setState({ hotelId: value });
   };
   render() {
+    console.log(this.state.hotelId);
     return (
       <div className="App">
         <Layout>
@@ -28,19 +38,26 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={Login} />
               <Route exact path="/home" component={Home} />
-              <Route exact path="/city-info" component={CityInfo} />
+
               <Route exact path="/chosen-city" component={ChosenCity} />
               <Route exact path="/accomodation" component={Accomodation} />
               <Route
                 exact
                 path="/hotel"
                 render={props => (
-                  <Hotel
+                  <Hotel {...props} data={this.state.hotel.data} />
+                )}
+              />
+
+              <Route
+                exact
+                path="/city-info"
+                render={props => (
+                  <CityInfo
                     {...props}
-                    title={this.state.hotel.title}
-                    subtitle={this.state.hotel.subtitle}
-                    text={this.state.hotel.text}
-                    img={this.state.hotel.img}
+                    setId={this.setHotelID}
+                    data={this.state.hotel.data}
+                    cityList={this.state.cityList}
                   />
                 )}
               />

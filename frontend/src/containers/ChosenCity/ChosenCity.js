@@ -1,17 +1,16 @@
 import React, { Component } from "react";
 import "./ChosenCity.scss";
 import Modal from "../../UI/Modal/Modal";
-// import feedbackTextarea from "../../components/Modal/feedbackTextarea"
 
 export default class ChosenCity extends Component {
   state = {
     modalShow: false
   };
   modalToggler = () => {
-    this.setState(prevState => {return{ modalShow: !prevState }});
+    this.setState(prevState => {
+      return { modalShow: !prevState };
+    });
   };
-
-
 
   render() {
     return (
