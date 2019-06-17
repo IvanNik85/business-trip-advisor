@@ -1,1 +1,47 @@
 @import "../../index.scss";
+.containerModal {
+  border: 1px solid rgb(180, 175, 175);
+
+  display: block;
+  width: 80%;
+  max-width: 700px;
+
+  position: absolute;
+  z-index: 500;
+  background-color: white;
+
+  box-shadow: 1px 1px 1px gray;
+  padding: 6px;
+  left: 15%;
+  top: 20%;
+  box-sizing: border-box;
+  transition: all 0.3s ease-out;
+
+  -webkit-animation-name: zoomIn;
+  -webkit-animation-duration: 0.8s;
+  animation-name: zoomIn;
+  animation-duration: 0.8s;
+}
+@-webkit-keyframes zoomIn {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  50% {
+    opacity: 1;
+  }
+}

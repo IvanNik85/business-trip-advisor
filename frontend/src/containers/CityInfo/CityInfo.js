@@ -5,14 +5,22 @@ import Feedback from "../../components/Feedback/Feedback";
 import ShowHotel from "../../components/Select/ShowHotel";
 import Selection from "../../components/Select/Selection";
 import CityLifeTransportation from "../../components/CityLifeTransportation/CityLifeTransportation";
+import Icon from "../../UI/Icon/Icon";
+const data = ["lalal", "kakakka", "kakakka"];
 
 export default class CityInfo extends Component {
   state = {
-    selectedCity: ""
+    selectedCity: "",
+    accomodation: []
   };
 
   setSelectedCity = value => {
-    this.setState({ selectedCity: value });
+    this.setState({ selectedCity: value }, this.getAccomodations());
+  };
+
+  getAccomodations = () => {
+    //poziv da spusti sa baze 4 top rated akomodations za grad koji je stejt!
+    this.setState({ accomodation: data });
   };
 
   render() {
@@ -26,7 +34,7 @@ export default class CityInfo extends Component {
               <h1>{cityName}City</h1>
             </div>
             <div className="flex">
-              <Selection options={cityList} setCity={this.setSelectedCity} />
+              <Selection options={cityList} setOption={this.setSelectedCity} />
             </div>
           </div>
           <div className="cHeaderRight">
@@ -62,9 +70,11 @@ export default class CityInfo extends Component {
               {"sort komponenta"}
             </div>
             <div className="flex">
-              <i
-                className="fas fa-comment-medical"
-                onClick={() => console.log("rade ikon")}
+              <Icon
+                iconClass={"comment-medical"}
+                color={"addComentIcon"}
+                fontSize={60}
+                clicked={() => console.log("radi ikon klik")}
               />
             </div>
           </div>

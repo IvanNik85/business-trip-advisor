@@ -1,0 +1,36 @@
+$color: rgb(180, 175, 175);
+.formAndImg {
+  position: relative;
+  padding: 3em;
+
+  .formFeedbackContainer {
+    .inputName {
+      border: none;
+      border-bottom: 0.1em solid $color;
+      width: 100%;
+      display: block;
+    }
+    ::placeholder {
+      color: $color;
+      font-size: 1.3em;
+      padding-left: 0.2em;
+      letter-spacing: 1px;
+      font-weight: 100;
+    }
+    .formFlexContainer {
+      display: flex;
+      flex-wrap: wrap;
+
+      .modalSelection {
+        width: 55%;
+        border-bottom: 1px solid $color;
+        margin-right: 1em;
+      }
+
+      /*ako je zeleni rate slider*/
+      .slidecontainer {
+        padding: 3em 1em 0;
+      }
+    }
+  }
+}

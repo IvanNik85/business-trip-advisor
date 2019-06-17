@@ -2,7 +2,6 @@ import React from "react";
 import "./Hotel.scss";
 import Feedback from "../../components/Feedback/Feedback";
 import Selection from "../../components/Select/Selection";
-// import faker from "faker";
 
 export default function Hotel(props) {
   const { id, data } = props;

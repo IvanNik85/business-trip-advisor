@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import faker from "faker";
 import Hotel from "./containers/Hotel/Hotel";
-import Layout from "./components/UI/Layout/Layout";
+import Layout from "./UI/Layout/Layout";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Login from "./containers/Login/Login";
 import CityInfo from "./containers/CityInfo/CityInfo";
