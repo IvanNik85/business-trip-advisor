@@ -3,6 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Feedback from "../../components/Feedback/Feedback";
 import ShowHotel from "../../components/Select/ShowHotel";
+import CityLifeTransportation from "../../components/CityLifeTransportation/CityLifeTransportation"
 import faker from "faker";
 
 export default function CityInfo(props) {
@@ -57,28 +58,10 @@ export default function CityInfo(props) {
         <div className="cInfoRight">{"Google Map"}</div>
       </div>
 
-      <div
-        className=""
-        id="transport"
-        style={{
-          height: "20vh",
-          backgroundColor: "aqua",
-          border: "1px solid black"
-        }}
-      >
-        {"transport ikonice komponenta"}
-      </div>
-      <div
-        className=""
-        id="citylife"
-        style={{
-          height: "20vh",
-          backgroundColor: "grey",
-          border: "1px solid black"
-        }}
-      >
-        {"citylife ikonice komponenta"}
-      </div>
+
+      <CityLifeTransportation title='Transportation' classDiv = {'transportation'}/>
+     <CityLifeTransportation title='City Life' classDiv = {'cityLife'}/>
+
       <div className="hotelReviews">
         <div className="reviewsHeder">
           <h2>Reviews</h2>

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Overlay from "../../components/Login/Overlay/Overlay";
 import OverlayPanel from "../../components/Login/Overlay/OverlayPanel";
 import Form from "../../components/Login/Form/Form";
-import Button from "../../components/UI/Button/Button";
+import Button from "../../UI/Button/Button";
 import "./Login.scss";
 
 export default class Login extends Component {

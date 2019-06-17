@@ -1,15 +1,15 @@
 import React from "react";
 import "./FeedbackCard.scss";
 import Bar from "../../Bar/Bar";
-import ChosenCityLifeIcon from "../../ChosenCityLifeIcon/ChosenCitLifeIcon";
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Icon from '../../../UI/Icon/Icon'
+import './FeedbackCard.scss'
 
 function FeebackCard(props) {
   let { img, name, commentTitle, comment } = props.data;
   console.log(props);
   return (
     <div className="feedbackCard">
-      <ChosenCityLifeIcon />
+      <Icon fontSize = {18} iconClass={'university'} color={'color1'}/>
       <div className="nameTitleBar">
         <img id="userImg" src={img} alt="userImage" />
         <div className="nameTitle">

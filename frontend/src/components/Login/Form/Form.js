@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import InputField from './Input'
-import Button from '../../UI/Button/Button'
+import Button from '../../../UI/Button/Button'
 
 import './Form.scss';
 
