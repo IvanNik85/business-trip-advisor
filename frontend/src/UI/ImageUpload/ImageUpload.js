@@ -1,25 +1,27 @@
 import React from "react";
 import "./ImageUpload.scss";
+import Icon from '../Icon/Icon'
 
-// aj don noooo"!"!"!""!?!?!??!""
+
 
 const ImageUpload = props => {
   return (
     <div className="imageUploadContainer">
       <form action="##">
-        <i className="far fa-images uploadImage" />
+        <label htmlFor={"imageUpload"}>
+          <a style={{ cursor: "pointer" }}>
+            <Icon iconClass={"images "} fontSize={"50px"} />
+          </a>
+        </label>
         <input
           type="file"
-          name={props.name}
+          name="imageUpload"
           accept="image/*"
-          className={"custom-file-input"}
+          id="imageUpload"
+          style={{ display: "none" }}
         />
 
-        <input
-          className="uploadRelativeDiv"
-          type="submit"
-          value="Upload image"
-        />
+        <input type="submit" value="Upload image" />
       </form>
     </div>
   );
