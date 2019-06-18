@@ -1,4 +1,4 @@
-.cityLife, .transportation {
+.cityLife, .transportation, .accomodation{
     background-color: rgba(86, 66, 86, 1);
     height: auto;
     width: 100%;   
@@ -14,7 +14,7 @@
         color: #fff;
         font-size: 20px;
     }
-    .cityLifestyle, .transportStyle {  
+    .cityLifestyle, .transportStyle, .accomodationStyle {  
         display: flex;
         justify-content: center;  
         flex-flow: row wrap; 
@@ -42,6 +42,12 @@
     
     }
 }
+.accomodationStyle {
+    height: 250px;
+}
+.accomodation {
+    background-color: rgb(37, 145, 109);
+}
 .transportation {
     background-color: rgb(247, 59, 59);
 }
@@ -52,5 +58,6 @@
 #visible {
     display: flex;
 }
+
 
 
