@@ -1,55 +1,63 @@
-import React from "react";
-import "./CityLifeTransportation.scss";
-import IconAndText from "../../UI/IconAndText/IconAndText";
+import React, {Component} from 'react'
+import './CityLifeTransportation.scss'
+import Icon from '../../UI/Icon/Icon'
+import IconAndText from '../../UI/IconAndText/IconAndText'
 
-export default function CityLifeTransportation(props) {
-  const { title } = props;
+class CityLifeTransportation extends Component {
+    constructor() {
+        super()
+        this.state = {
+            id: 'hidden',
+            transform: true
+        }
+        this.handleClick = this.handleClick.bind(this)
+    }
 
-  const iconClassesCity = [
-    { "Food and Drinks": "hamburger" },
-    { Safety: "user-shield" },
-    { Sightseeing: "binoculars" },
-    { "Local Transport": "bus" },
-    { "Local Culture": "university" },
-    { Other: "map-signs" }
-  ];
-  const iconClassesTransport = [
-    { Aeroplane: "plane" },
-    { "Rent a Car": "car" },
-    { Bus: "bus-alt" },
-    { Subway: "subway" },
-    { Taxi: "taxi" }
-  ];
-  let icons = null;
+    handleClick() {
+        this.setState({
+           id: this.state.id === 'hidden'? 'visible': 'hidden'           
+        })
+    }
 
-  if (title === "City Life") {
-    icons = iconClassesCity.map((el, i) => {
-      return (
-        <IconAndText
-          key={i}
-          iconClass={Object.values(el)}
-          color={"color" + i}
-          title={Object.keys(el)}
-        />
-      );
-    });
-  } else {
-    icons = iconClassesTransport.map((el, i) => {
-      return (
-        <IconAndText
-          key={i}
-          iconClass={Object.values(el)}
-          color={"color" + i}
-          title={Object.keys(el)}
-        />
-      );
-    });
-  }
+    render() {
+        const { title, contDiv, iconDiv} = this.props
 
-  return (
-    <div className="cityLife">
-      <h1>{title}</h1>
-      <div className="cityLifestyle">{icons}</div>
-    </div>
-  );
+        const iconClassesCity = [{ 'Food and Drinks': 'hamburger' }, { Safety: 'user-shield' }, { Sightseeing: 'binoculars' }, { 'Local Transport': 'bus' }, { 'Local Culture': 'university' }, { Other: 'map-signs' }];
+    
+        const iconClassesTransport = [{ Aeroplane: 'plane' }, { 'Rent a Car': 'car' }, { Bus: 'bus-alt' }, { Subway: 'subway' }, { Taxi: 'taxi' }]
+        let icons = null;
+    
+        if (title === 'City Life') {
+            icons = iconClassesCity.map((el, i) => {
+    
+                return <IconAndText key={i} iconClass={Object.values(el)} color={'color' + i} title={Object.keys(el)} />
+            })
+    
+        } else {
+            icons = iconClassesTransport.map((el, i) => {
+    
+                return <IconAndText key={i} iconClass={Object.values(el)} color={'color' + i} title={Object.keys(el)} />
+            })
+        }    
+            
+        return (
+            <div className={contDiv}>
+               <div className="title" onClick = {this.handleClick}>
+                    <h1>{title}</h1><span><i class="fas fa-chevron-down"></i></span>
+               </div>
+                <div className={iconDiv} id = {this.state.id} >
+                    {icons}
+                </div>
+            </div>
+        )
+    }    
 }
+
+export default CityLifeTransportation
+
+/*              <i class="fas fa-"><br/>Food and drinks</i>
+                <i class="fas fa-user-shield"><br/>Safety</i>
+                <i class="fas fa-binoculars"><br/>Sightseeing</i>
+                <i class="fas fa-bus"><br/>Local Transport</i>
+                <i class="fas fa-university"><br/>Local Culture</i>
+                <i class="fas fa-map-signs"><br/>Other</i>*/

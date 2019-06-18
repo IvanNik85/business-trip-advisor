@@ -5,7 +5,9 @@ export default function IconAndText(props) {
 const {iconClass,color,title } = props
     return (
         <div className={color}>
-          <Icon  iconClass = {iconClass} fontSize={30} />
+
+          <Icon  iconClass = {iconClass} fontSize={40} />
+
           <p>{title}</p>
         </div>
     )

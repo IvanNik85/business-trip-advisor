@@ -51,7 +51,6 @@ export default class CityInfo extends Component {
           <div className="flex">
             <Link to="/accomodation">SHOW ALL &rArr;</Link>
           </div>
-
           <div className="flex">{"weder componenta"}</div>
         </div>
         <div className="cityInfo" id="accomodation">
@@ -61,8 +60,8 @@ export default class CityInfo extends Component {
           </div>
           <div className="cInfoRight">{"Google Map"}</div>
         </div>
-        <CityLifeTransportation title="Transportation" />
-        <CityLifeTransportation title="City Life" />
+      <CityLifeTransportation title='Transportation' contDiv = 'transportation' iconDiv = 'transportStyle' />
+      <CityLifeTransportation title='City Life' contDiv = 'cityLife' iconDiv = 'cityLifestyle'/>
         <div className="hotelReviews">
           <div className="reviewsHeder">
             <div className="flex">

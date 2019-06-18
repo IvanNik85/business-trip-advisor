@@ -1,22 +1,56 @@
-.cityLife {
-  background-color: rgba(86, 66, 86, 1);
-  height: 30vh;
-  width: 100%;
-  text-align: center;
+.cityLife, .transportation {
+    background-color: rgba(86, 66, 86, 1);
+    height: auto;
+    width: 100%;   
+    position: relative;
 
-  h1 {
-    color: #fff;
-    text-align: center;
-  }
-
-  .cityLifestyle {
-    display: flex;
-    justify-content: center;
-
-    i {
-      color: #fff;
-      font-size: 25px;
-      margin: 25px;
+    h1 { 
+        display: inline-block;
+        color: #fff;        
+        padding: 25px 20px 25px 40px;
+        font-weight: normal;       
     }
-  }
+    span i {
+        color: #fff;
+        font-size: 20px;
+    }
+    .cityLifestyle, .transportStyle {  
+        display: flex;
+        justify-content: center;  
+        flex-flow: row wrap; 
+        text-align: center;  
+        padding-bottom: 40px;
+
+        div {
+            height: 140px;
+            width: 140px;
+            padding: 10px;
+            font-weight: 700;
+        }
+        // .color0 p, .color0 i  {
+        //     color: red;
+        // }
+        i {
+            color: #fff;
+            font-size: 25px;
+            margin: 25px;
+        }
+        p {
+            color: #fff;
+            font-size: 16px;
+        }
+    
+    }
 }
+.transportation {
+    background-color: rgb(247, 59, 59);
+}
+#hidden {
+    display: none; 
+}       
+
+#visible {
+    display: flex;
+}
+
+
