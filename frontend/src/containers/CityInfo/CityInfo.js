@@ -59,8 +59,8 @@ export default function CityInfo(props) {
       </div>
 
 
-      <CityLifeTransportation title='Transportation' classDiv = {'transportation'}/>
-     <CityLifeTransportation title='City Life' classDiv = {'cityLife'}/>
+      <CityLifeTransportation title='Transportation' contDiv = 'transportation' iconDiv = 'transportStyle' />
+      <CityLifeTransportation title='City Life' contDiv = 'cityLife' iconDiv = 'cityLifestyle'/>
 
       <div className="hotelReviews">
         <div className="reviewsHeder">
