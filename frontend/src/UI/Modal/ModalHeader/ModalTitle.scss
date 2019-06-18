@@ -1,0 +1,11 @@
+.modalTitle {
+  display: flex;
+  justify-content: space-between;
+  flex: 7;
+  .save {
+    line-height: 1.5em;
+    padding-right: 1.5em;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+}

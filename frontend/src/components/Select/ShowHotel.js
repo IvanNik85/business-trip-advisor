@@ -1,23 +1,21 @@
 import React from "react";
-// import Bar from '../bar';
 import "./ShowHotel.scss";
 import Bar from "../Bar/Bar";
 
 export default function ShowHotel(props) {
-  const { name, city, text, img, score } = props;
+  const { data, id, setId } = props;
+  console.log(id);
   return (
     <div className="element">
       <div className="img">
-        <img src={img} alt={name} />
+        <img src={data.img} alt={data.title} />
       </div>
-      <div>
-        <h3>
-          {name},{city}
-        </h3>
-        <p>{text}</p>
-        <Bar score={score} />
+      <div className="hotelData">
+        <h1 onClick={() => setId(id)}> {data.title}</h1>
+        <h3>{data.subtitle}</h3>
+        <p>{data.text}</p>
+        <Bar score={data.score} />
       </div>
-      <div className="rate">{score}</div>
     </div>
   );
 }

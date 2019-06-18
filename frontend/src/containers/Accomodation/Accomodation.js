@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Accomodation.scss";
-
+import Image from "../../UI/Image/Image";
 
 export default class Accomodation extends Component {
   render() {

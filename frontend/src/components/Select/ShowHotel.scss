@@ -1,6 +1,5 @@
-* {
-  box-sizing: border-box;
-}
+@import "../../index.scss";
+
 .element {
   // border: 1px solid black;
   display: flex;
@@ -8,22 +7,20 @@
   background-color: rgba(36, 110, 185, 1);
   color: beige;
   padding-left: 2em;
+  .img {
+    width: 20%;
+    flex: 1;
+    img {
+      width: 100%;
+      margin: 15px auto;
+      padding: 0.5em 1em;
+    }
+  }
+  .hotelData {
+    flex: 2;
+  }
 }
-.img {
-  width: 20%;
-}
-img {
-  width: 100%;
-  //object-fit: cover;
-  margin: 15px auto;
-  padding: 0.5em 1em;
-}
-.rate {
-  width: 15%;
-  font-size: 2em;
-  text-align: center;
-  margin: auto;
-}
+
 @media only screen and (max-width: 450px) {
   img {
     width: 100%;

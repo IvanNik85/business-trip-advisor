@@ -1,0 +1,61 @@
+$colorTooltip: #4caf50;
+$colorBackground: #d3d3d3;
+
+.slidecontainer {
+  width: 15em;
+  padding: 1em;
+
+  .center-tooltip {
+    margin: 0.5em auto;
+
+    .tooltip {
+      width: 30px;
+      height: 30px;
+      background: $colorTooltip;
+      border-radius: 50% 50% 50% 2px;
+      margin: -50px 0 0 -20px;
+      transform: rotate(-45deg);
+      position: relative;
+      transition: 800ms cubic-bezier(0.52, 0.04, 0.13, 1.29);
+
+      .innertooltip {
+        height: 30px;
+        width: 30px;
+        position: relative;
+        top: 4px;
+        left: -14%;
+        transform: rotate(45deg);
+        color: white;
+        text-align: center;
+        font-size: 100%;
+        font-family: "Helvetica";
+        font-weight: 100;
+      }
+    }
+  }
+  .slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 0.4em;
+    background: $colorBackground;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: 0.2s;
+    transition: opacity 0.2s;
+    border-radius: 15px;
+  }
+
+  .slider:hover {
+    opacity: 1;
+  }
+
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 50%;
+    width: 1em;
+    height: 1em;
+    background: $colorTooltip;
+    cursor: pointer;
+  }
+}

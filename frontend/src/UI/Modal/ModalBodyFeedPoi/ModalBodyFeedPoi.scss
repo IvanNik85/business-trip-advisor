@@ -1,0 +1,16 @@
+.modalBodyFeedAndPOI {
+  .choose {
+    display: flex;
+    justify-content: space-around;
+    padding: 0.6em;
+    font-weight: 100;
+    background-color: #173f5f;
+    color: rgb(255, 255, 255);
+  }
+  .choose:hover {
+    cursor: pointer;
+  }
+  .topBorder {
+    height: 0.2em;
+  }
+}

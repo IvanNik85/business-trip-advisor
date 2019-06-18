@@ -6,7 +6,10 @@ const modal = props => {
   return (
     <>
       <Backdrop show={props.show} clicked={props.clicked} />
-      <div style={{ display: props.show ? "block" : "none" }}>
+      <div
+        className={"containerModal"}
+        style={{ display: props.show ? "block" : "none" }}
+      >
         {props.children}
       </div>
     </>

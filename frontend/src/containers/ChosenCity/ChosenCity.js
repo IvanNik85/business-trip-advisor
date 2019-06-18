@@ -1,29 +1,45 @@
 import React, { Component } from "react";
 import "./ChosenCity.scss";
 import Modal from "../../UI/Modal/Modal";
-// import feedbackTextarea from "../../components/Modal/feedbackTextarea"
+import ModalBodyFeedAndPOI from "../../UI/Modal/ModalBodyFeedPoi/ModalBodyFeedPoi";
+import ModalHeader from "../../UI/Modal/ModalHeader/ModalHeader";
 
 export default class ChosenCity extends Component {
   state = {
-    modalShow: false
+    modalShow: false,
+    selectedCategory: ""
   };
-  modalToggler = () => {
-    this.setState(prevState => {return{ modalShow: !prevState }});
+  setSelectedCategory = value => {
+    this.setState({ selectedCategory: value });
+  };
+  modalOpenHandler = () => {
+    this.setState({ modalShow: true });
   };
 
-
+  modalClosedHandler = () => {
+    this.setState({ modalShow: false });
+  };
 
   render() {
     return (
       <div>
-        <p onClick={this.modalToggler}>Chosen city</p>
+        <p onClick={this.modalOpenHandler}>Chosen city</p>
         <Modal
           style={{ "z-index": 50 }}
           show={this.state.modalShow}
-          clicked={this.modalToggler}
+          clicked={this.modalClosedHandler}
         >
-          <feedbackTextarea />
-          Modal{" "}
+          <ModalHeader
+            clicked={this.modalClosedHandler}
+            closeSpanClicked={this.modalClosedHandler}
+            title={"City Life Feedback"}
+            save={"SAVE"}
+          />
+          <ModalBodyFeedAndPOI
+            title1={"Feedback"}
+            title2={"POI"}
+            setOption={this.setSelectedCategory}
+          />
         </Modal>
       </div>
     );

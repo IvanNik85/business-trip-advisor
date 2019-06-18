@@ -1,0 +1,94 @@
+$color: rgb(180, 175, 175);
+
+.imageUploadContainer {
+  position: absolute;
+  right: 3em;
+  bottom: 3.2em;
+  display: inline-block;
+  height: 8.4em;
+  width: 35%;
+  border: 1.2px solid $color;
+
+  .uploadImage {
+    color: $color;
+    font-size: 3em;
+    padding: 0.6em 2em;
+
+    input[type="file"] {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      left: 55px;
+    }
+  }
+  input[type="submit"] {
+    display: inline-block;
+    position: absolute;
+    bottom: 1em;
+    right: 23%;
+    color: $color;
+    font-size: 1.2em;
+    background-color: white;
+    border: none;
+  }
+}
+@media (max-width: 850px) {
+  .imageUploadContainer {
+    display: block;
+    position: relative;
+    width: 100%;
+    right: 0;
+    bottom: 0;
+
+    .uploadImage {
+      color: $color;
+      font-size: 3em;
+      padding: 0.8em 1em;
+
+      input[type="file"] {
+        width: 40px;
+        height: 40px;
+      }
+    }
+    input[type="submit"] {
+      display: inline-block;
+      position: absolute;
+      bottom: 1em;
+      right: 10%;
+      color: $color;
+      font-size: 1.2em;
+      background-color: white;
+      border: none;
+    }
+  }
+}
+/*pokusaj */
+
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.custom-file-input::before {
+  content: "";
+  display: inline-block;
+  background: linear-gradient(top, #f9f9f9, #e3e3e3);
+
+  padding: 2px 28px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+}
+.custom-file-input:hover::before {
+  border-color: black;
+}
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+
+// .uploadRelativeDiv {
+//   position: absolute;
+//   top: 0;
+//   width: 50%;
+//   // height: 100%;
+// }
