@@ -2,6 +2,7 @@ import React from "react";
 import "./FeedbackCard.scss";
 import Bar from "../../Bar/Bar";
 import ChosenCityLifeIcon from "../../ChosenCityLifeIcon/ChosenCitLifeIcon";
+import Icon from "../../../UI/Icon/Icon"
 
 function FeebackCard(props) {
   let { img, name, commentTitle, comment } = props.data;
