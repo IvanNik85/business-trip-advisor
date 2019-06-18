@@ -1,10 +1,26 @@
-import React from "react";
-import "./Home.scss";
+import React, { Component } from "react";
+import weatherData from "../../weaterData";
+import Skycons from "skycons-component";
 
-export default function Home() {
-  return (
-    <div>
-      <h1>Home</h1>
-    </div>
-  );
+export default class Home extends Component {
+  state = {
+    weatherData
+  };
+
+  render() {
+    console.log(this.state.weatherData);
+    const icon = this.state.weatherData.currently.icon;
+    let iconColor = "black";
+    if (icon == "clear-day") {
+      iconColor = "orange";
+    }
+    return (
+      <Skycons
+        icon={icon}
+        animate={false}
+        iconColor={iconColor}
+        style={{ width: 64, height: 64 }}
+      />
+    );
+  }
 }

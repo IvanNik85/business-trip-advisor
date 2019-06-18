@@ -9,6 +9,9 @@ import ChosenCity from "./containers/ChosenCity/ChosenCity";
 import Nav from "./components/Nav/Nav";
 import Accomodation from "./containers/Accomodation/Accomodation";
 import Home from "./containers/Home/Home";
+import axios from "axios";
+
+axios.defaults.withCredentials = true;
 
 class App extends Component {
   state = {
