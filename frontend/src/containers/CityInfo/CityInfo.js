@@ -60,6 +60,7 @@ export default class CityInfo extends Component {
           </div>
           <div className="cInfoRight">{"Google Map"}</div>
         </div>
+        <CityLifeTransportation title='Accomodation' contDiv ='accomodation' iconDiv = 'accomodationStyle'/>  
       <CityLifeTransportation title='Transportation' contDiv = 'transportation' iconDiv = 'transportStyle' />
       <CityLifeTransportation title='City Life' contDiv = 'cityLife' iconDiv = 'cityLifestyle'/>
         <div className="hotelReviews">
