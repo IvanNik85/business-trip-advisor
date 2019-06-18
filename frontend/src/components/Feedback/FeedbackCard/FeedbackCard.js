@@ -7,7 +7,9 @@ function FeebackCard(props) {
   let { img, name, commentTitle, comment } = props.data;
   return (
     <div className="feedbackCard">
-      <ChosenCityLifeIcon />
+      <div class="iconDiv">
+      <Icon fontSize = {18} iconClass={'university'} color={'color1'}/>
+      </div>
       <div className="nameTitleBar">
         <img id="userImg" src={img} alt="userImage" />
         <div className="nameTitle">

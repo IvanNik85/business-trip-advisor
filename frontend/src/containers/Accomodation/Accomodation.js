@@ -14,7 +14,7 @@ export default class Accomodation extends Component {
             <div className="accomUnit">
               <div className="accomListLeft">{"Unit komponenta"}</div>
               <div className="accomListRight">
-                <Image />
+               
               </div>
             </div>
           </div>
