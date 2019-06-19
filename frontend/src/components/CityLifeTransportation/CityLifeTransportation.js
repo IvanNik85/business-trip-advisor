@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import "./CityLifeTransportation.scss";
 import Icon from "../../UI/Icon/Icon";
 import IconAndText from "../../UI/IconAndText/IconAndText";
+import ShowHotel from "../Select/ShowHotel";
 import AccomodationFiles from "./AccomodationFiles";
+
 
 class CityLifeTransportation extends Component {
   state = {
@@ -38,6 +40,7 @@ class CityLifeTransportation extends Component {
       { Taxi: "taxi" }
     ];
     let icons = null;
+    let showHotel = null;
 
     if (title === "City Life") {
       icons = iconClassesCity.map((el, i) => {
@@ -64,9 +67,14 @@ class CityLifeTransportation extends Component {
     } else {  
       icons = null;     
     }
+    if (title === "Accomodation") {
+      showHotel = (
+        <ShowHotel setId={this.props.setId} id={9} data={this.props.data} />
+      );
+    }
 
     return (
-      <div className={contDiv}>
+      <div className={contDiv} id={contDiv}>
         <div className="title" onClick={this.handleClick}>
           <h1>{title}</h1>
           <span>
