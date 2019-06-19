@@ -6,12 +6,15 @@ import ShowHotel from "../../components/Select/ShowHotel";
 import Selection from "../../components/Select/Selection";
 import CityLifeTransportation from "../../components/CityLifeTransportation/CityLifeTransportation";
 import Icon from "../../UI/Icon/Icon";
+import Weather from "../../components/Weather/Weather";
+import weatherData from "../../weaterData";
 const data = ["lalal", "kakakka", "kakakka"];
 
 export default class CityInfo extends Component {
   state = {
     selectedCity: "",
-    accomodation: []
+    accomodation: [],
+    weatherData
   };
 
   setSelectedCity = value => {
@@ -39,8 +42,8 @@ export default class CityInfo extends Component {
           </div>
           <div className="cHeaderRight">
             <a href="#accomodation"> ACCOMODATION</a>
-            <a href="#transport">TRANSPORT</a>
-            <a href="#citylife">CITYLIFE</a>
+            <a href="#transportation">TRANSPORT</a>
+            <a href="#cityife">CITYLIFE</a>
           </div>
         </div>
         <div className="aInfoDiv">
@@ -51,7 +54,13 @@ export default class CityInfo extends Component {
           <div className="flex">
             <Link to="/accomodation">SHOW ALL &rArr;</Link>
           </div>
-          <div className="flex">{"weder componenta"}</div>
+          <div className="flex">
+            <Weather
+              summary={this.state.weatherData.currently.summary}
+              icon={this.state.weatherData.currently.icon}
+              temperature={this.state.weatherData.currently.temperature}
+            />
+          </div>
         </div>
         <div className="cityInfo" id="accomodation">
           <div className="cInfoLeft">
@@ -60,9 +69,24 @@ export default class CityInfo extends Component {
           </div>
           <div className="cInfoRight">{"Google Map"}</div>
         </div>
-        <CityLifeTransportation title='Accomodation' contDiv ='accomodation' iconDiv = 'accomodationStyle'/>  
-      <CityLifeTransportation title='Transportation' contDiv = 'transportation' iconDiv = 'transportStyle' />
-      <CityLifeTransportation title='City Life' contDiv = 'cityLife' iconDiv = 'cityLifestyle'/>
+        <CityLifeTransportation
+          title="Accomodation"
+          contDiv="accomodation"
+          iconDiv="accomodationStyle"
+          setId={this.props.setId}
+          id={9}
+          data={this.props.data}
+        />
+        <CityLifeTransportation
+          title="Transportation"
+          contDiv="transportation"
+          iconDiv="transportStyle"
+        />
+        <CityLifeTransportation
+          title="City Life"
+          contDiv="cityLife"
+          iconDiv="cityLifestyle"
+        />
         <div className="hotelReviews">
           <div className="reviewsHeder">
             <div className="flex">

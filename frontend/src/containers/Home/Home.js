@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import weatherData from "../../weaterData";
-import Skycons from "skycons-component";
+import Weather from "../../components/Weather/Weather";
 
 export default class Home extends Component {
   state = {
@@ -8,18 +8,11 @@ export default class Home extends Component {
   };
 
   render() {
-    console.log(this.state.weatherData);
-    const icon = this.state.weatherData.currently.icon;
-    let iconColor = "black";
-    if (icon == "clear-day") {
-      iconColor = "orange";
-    }
     return (
-      <Skycons
-        icon={icon}
-        animate={false}
-        iconColor={iconColor}
-        style={{ width: 64, height: 64 }}
+      <Weather
+        summary={this.state.weatherData.currently.summary}
+        icon={this.state.weatherData.currently.icon}
+        temperature={this.state.weatherData.currently.temperature}
       />
     );
   }

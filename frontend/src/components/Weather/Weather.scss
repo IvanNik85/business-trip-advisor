@@ -1,0 +1,13 @@
+@import "../../index.scss";
+
+.weatherFlex {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: blueviolet;
+  color: white;
+  padding: 1em 3em;
+  p {
+    font-size: 3rem;
+  }
+}
