@@ -8,7 +8,7 @@ import CityLifeTransportation from "../../components/CityLifeTransportation/City
 import Icon from "../../UI/Icon/Icon";
 import Weather from "../../components/Weather/Weather";
 import weatherData from "../../weaterData";
-const data = ["lalal", "kakakka", "kakakka"];
+const data = ["asdasdl", "kakakka", "kakakka"];
 
 export default class CityInfo extends Component {
   state = {
@@ -31,7 +31,7 @@ export default class CityInfo extends Component {
   }
 
   render() {
-    const { cityName, cityList } = this.props;
+    const { cityName, cityList, setId, data } = this.props;
     return (
       <div className="cityDiv">
         <div className="cityHeader">
@@ -49,37 +49,14 @@ export default class CityInfo extends Component {
             <a href="#transportation">TRANSPORT</a>
             <a href="#cityife">CITYLIFE</a>
           </div>
-        </div>
-        <div className="aInfoDiv">
-          <div className="flex">
-            <h2>Accomodation</h2>
-            <h6>Our top rated accomodations</h6>
-          </div>
-          <div className="flex">
-            <Link to="/accomodation">SHOW ALL &rArr;</Link>
-          </div>
-          <div className="flex">
-            <Weather
-              summary={this.state.weatherData.currently.summary}
-              icon={this.state.weatherData.currently.icon}
-              temperature={this.state.weatherData.currently.temperature}
-            />
-          </div>
-        </div>
-        <div className="cityInfo" id="accomodation">
-          <div className="cInfoLeft">
-            <ShowHotel setId={this.props.setId} id={9} data={this.props.data} />
-            {"Map list hotela sa ocenama komponenta"}
-          </div>
-          <div className="cInfoRight">{"Google Map"}</div>
-        </div>
+        </div>        
         <CityLifeTransportation
           title="Accomodation"
           contDiv="accomodation"
           iconDiv="accomodationStyle"
-          setId={this.props.setId}
+          setId={setId}
           id={9}
-          data={this.props.data}
+          data={data}
         />
         <CityLifeTransportation
           title="Transportation"

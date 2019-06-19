@@ -2,35 +2,53 @@
 * {
   padding: 0;
   margin: 0;
-
 }
-.element {
-  border: 1px solid black;
-  border-radius: 4px;
-  display: flex;
-  flex-flow: row wrap;
-  background-color: transparent;
-  color: beige;
-  height: 140px;
-  // padding-left: 2em;
-  .img {
-    width: 100%;
-    height: 100%;
-    flex: 1;
-    img {
-      width: 100%;
-      max-height: 100%;     
-      padding: 0.5em 1em;
+.wrapElement {
+  background-color: rgba(0, 0, 0, .5);
+  width: 90%;
+  margin: auto;
+  margin-bottom: 10px;
+
+  .element {
+    border: 1px solid black; 
+    position: relative;
+    display: flex; 
+    background-color: transparent;
+    color: beige; 
+      
+      img {
+        display: inline-block;
+        width: 120px;
+        height: 120px;
+        padding: 8px;
+      }
+    
+    .hotelData {
+      display: flex;
+      justify-content: center;
+      flex-flow: column wrap;
+      width: 70%;
+      padding-left: 20px;
+      
+      h1 {
+        padding: 5px 0;
+        font-weight: 700;      
+      }
+      .wrapBar p {
+        display: none;
+      } 
+    }  
+    .score {
+      width: 30%;
+      font-size: 60px;
+      padding: 20px;
+
+      .barBack {
+        display: none;     
+      }
     }
   }
-  .hotelData {
-    flex: 4;
-    height: 100%;
-
-    h1 {
-      padding: 5px 0;
-    }
-  }  
+  
 }
 
 // @media only screen and (max-width: 450px) {

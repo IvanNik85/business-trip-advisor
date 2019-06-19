@@ -1,7 +1,7 @@
 #fullWidth {
     width: 100%;    
 
-    #nesto  {
+    #accomWeather  {
         width: 100%;
         display: flex;
         flex-flow: row wrap;
@@ -10,10 +10,15 @@
         padding: 0 40px;
         color: #fff;
 
+        h3 {
+            padding-right: 40px;
+        }
+
         #linkAccomodation {
             text-decoration: none;
             color: #fff;
             font-weight: 700;
+            padding: 20px 30px 20px 0;
             
             i {
                 padding-left: 5px;
@@ -22,11 +27,12 @@
     }
     .cityInformation {
         display: flex;
+        height: 500px;
 
         .cityInfoLeft {             
-            flex: 3;
+            flex: 2;
         }
-        .cityInfoRight {
+        .cityInfoRight {            
             flex: 1;
         }
     }

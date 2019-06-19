@@ -20,7 +20,7 @@ class CityLifeTransportation extends Component {
   };
 
   render() {
-    const { title, contDiv, iconDiv } = this.props;
+    const { title, contDiv, iconDiv, setId, data } = this.props;
     
 
     const iconClassesCity = [
@@ -87,7 +87,7 @@ class CityLifeTransportation extends Component {
         </div>
         <div className={iconDiv} id={this.state.id}>
           {icons}    
-          {title === "Accomodation" && <AccomodationFiles setId={this.props.setId} id={9} data={this.props.data} />}     
+          {title === "Accomodation" && <AccomodationFiles setId={setId} id={9} data={data} />}     
         </div>
       </div>
     );

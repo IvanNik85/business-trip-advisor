@@ -28,9 +28,10 @@
     border: 1px solid black;
 
     .cInfoLeft {
-      flex: 3;
+      flex: 4;
     }
     .cInfoRight {
+      height: 400px;
       flex: 1;
     }
   }
