@@ -73,9 +73,6 @@ export default class CityInfo extends Component {
           title="Accomodation"
           contDiv="accomodation"
           iconDiv="accomodationStyle"
-          setId={this.props.setId}
-          id={9}
-          data={this.props.data}
         />
         <CityLifeTransportation
           title="Transportation"
