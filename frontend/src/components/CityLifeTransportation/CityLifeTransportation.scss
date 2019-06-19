@@ -14,12 +14,13 @@
         color: #fff;
         font-size: 20px;
     }
-    .cityLifestyle, .transportStyle, .accomodationStyle {  
+    .cityLifestyle, .transportStyle{  
         display: flex;
         justify-content: center;  
         flex-flow: row wrap; 
         text-align: center;  
-        padding-bottom: 40px;
+        padding-bottom: 0 40px;       
+        overflow: hidden;  
 
         div {
             height: 140px;
@@ -27,6 +28,7 @@
             padding: 10px;
             font-weight: 700;
         }
+
         // .color0 p, .color0 i  {
         //     color: red;
         // }
@@ -39,11 +41,16 @@
             color: #fff;
             font-size: 16px;
         }
-    
     }
+    .accomodationStyle {
+        display: flex;
+        justify-content: space-between;
+    }    
 }
 .accomodationStyle {
-    height: 250px;
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
 }
 .accomodation {
     background-color: rgb(37, 145, 109);
@@ -51,13 +58,23 @@
 .transportation {
     background-color: rgb(247, 59, 59);
 }
-#hidden {
-    display: none; 
-}       
-
-#visible {
-    display: flex;
+// #hidden {
+//     display: none; 
+// }   
+// #visible {
+//     display: flex;    
+// }
+#hidden {   
+    height: 0px;
+    transition: linear 0.4s;   
+}    
+#visible {  
+    height: 230px;
+    transition: linear 0.4s;    
 }
+
+
+
 
 
 

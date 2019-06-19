@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./CityLifeTransportation.scss";
 import Icon from "../../UI/Icon/Icon";
 import IconAndText from "../../UI/IconAndText/IconAndText";
+import AccomodationFiles from "./AccomodationFiles";
 
 class CityLifeTransportation extends Component {
   state = {
@@ -18,6 +19,7 @@ class CityLifeTransportation extends Component {
 
   render() {
     const { title, contDiv, iconDiv } = this.props;
+    
 
     const iconClassesCity = [
       { "Food and Drinks": "hamburger" },
@@ -59,8 +61,8 @@ class CityLifeTransportation extends Component {
           />
         );
       });
-    } else {
-      icons = null;
+    } else {  
+      icons = null;     
     }
 
     return (
@@ -80,7 +82,8 @@ class CityLifeTransportation extends Component {
           </span>
         </div>
         <div className={iconDiv} id={this.state.id}>
-          {icons}
+          {icons}    
+          {title === "Accomodation" && <AccomodationFiles />}     
         </div>
       </div>
     );
