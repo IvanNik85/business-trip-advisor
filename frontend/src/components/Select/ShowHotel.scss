@@ -1,28 +1,40 @@
 @import "../../index.scss";
+* {
+  padding: 0;
+  margin: 0;
 
+}
 .element {
-  // border: 1px solid black;
+  border: 1px solid black;
+  border-radius: 4px;
   display: flex;
-  flex-wrap: wrap;
-  background-color: rgba(36, 110, 185, 1);
+  flex-flow: row wrap;
+  background-color: transparent;
   color: beige;
-  padding-left: 2em;
+  height: 140px;
+  // padding-left: 2em;
   .img {
-    width: 20%;
+    width: 100%;
+    height: 100%;
     flex: 1;
     img {
       width: 100%;
-      margin: 15px auto;
+      max-height: 100%;     
       padding: 0.5em 1em;
     }
   }
   .hotelData {
-    flex: 2;
-  }
+    flex: 4;
+    height: 100%;
+
+    h1 {
+      padding: 5px 0;
+    }
+  }  
 }
 
-@media only screen and (max-width: 450px) {
-  img {
-    width: 100%;
-  }
-}
+// @media only screen and (max-width: 450px) {
+//   img {
+//     width: 100%;
+//   }
+// }

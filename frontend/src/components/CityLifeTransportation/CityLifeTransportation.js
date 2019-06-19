@@ -67,11 +67,7 @@ class CityLifeTransportation extends Component {
     } else {  
       icons = null;     
     }
-    if (title === "Accomodation") {
-      showHotel = (
-        <ShowHotel setId={this.props.setId} id={9} data={this.props.data} />
-      );
-    }
+    
 
     return (
       <div className={contDiv} id={contDiv}>
@@ -85,13 +81,13 @@ class CityLifeTransportation extends Component {
                   : "rotate(180deg)",
                 transition: "0.4s"
               }}
-              class="fas fa-chevron-down"
+              className="fas fa-chevron-down"
             />
           </span>
         </div>
         <div className={iconDiv} id={this.state.id}>
           {icons}    
-          {title === "Accomodation" && <AccomodationFiles />}     
+          {title === "Accomodation" && <AccomodationFiles setId={this.props.setId} id={9} data={this.props.data} />}     
         </div>
       </div>
     );

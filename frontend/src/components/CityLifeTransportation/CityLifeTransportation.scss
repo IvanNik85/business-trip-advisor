@@ -19,8 +19,8 @@
         justify-content: center;  
         flex-flow: row wrap; 
         text-align: center;  
-        padding-bottom: 0 40px;       
-        overflow: hidden;  
+        padding-bottom: 40px;       
+        // overflow: hidden;  
 
         div {
             height: 140px;
@@ -45,6 +45,7 @@
     .accomodationStyle {
         display: flex;
         justify-content: space-between;
+        overflow: hidden;
     }    
 }
 .accomodationStyle {
@@ -58,20 +59,20 @@
 .transportation {
     background-color: rgb(247, 59, 59);
 }
-// #hidden {
-//     display: none; 
-// }   
-// #visible {
-//     display: flex;    
-// }
-#hidden {   
-    height: 0px;
-    transition: linear 0.4s;   
-}    
-#visible {  
-    height: 230px;
-    transition: linear 0.4s;    
+#hidden {
+    display: none; 
+}   
+#visible {
+    display: flex;    
 }
+// #hidden {   
+//     height: 0px;
+//     transition: linear 0.4s;   
+// }    
+// #visible {  
+//     height: 230px;
+//     transition: linear 0.4s;    
+// }
 
 
 

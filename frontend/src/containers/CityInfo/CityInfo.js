@@ -14,7 +14,8 @@ export default class CityInfo extends Component {
   state = {
     selectedCity: "",
     accomodation: [],
-    weatherData
+    weatherData,
+    rewOption:''
   };
 
   setSelectedCity = value => {
@@ -25,6 +26,9 @@ export default class CityInfo extends Component {
     //poziv da spusti sa baze 4 top rated akomodations za grad koji je stejt!
     this.setState({ accomodation: data });
   };
+  setRewOption=(val)=> {
+    this.setState({rewOption: val})
+  }
 
   render() {
     const { cityName, cityList } = this.props;
@@ -91,7 +95,7 @@ export default class CityInfo extends Component {
           <div className="reviewsHeder">
             <div className="flex">
               <h2>Reviews</h2>
-              {"sort komponenta"}
+              <Selection  options={['latest','date','score']} setOption={this.setRewOption} classes='rewSelect'/>
             </div>
             <div className="flex">
               <Icon
