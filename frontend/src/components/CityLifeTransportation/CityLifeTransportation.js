@@ -5,7 +5,6 @@ import IconAndText from "../../UI/IconAndText/IconAndText";
 import ShowHotel from "../Select/ShowHotel";
 import AccomodationFiles from "./AccomodationFiles";
 
-
 class CityLifeTransportation extends Component {
   state = {
     id: "hidden",
@@ -21,7 +20,6 @@ class CityLifeTransportation extends Component {
 
   render() {
     const { title, contDiv, iconDiv } = this.props;
-    
 
     const iconClassesCity = [
       { "Food and Drinks": "hamburger" },
@@ -64,8 +62,8 @@ class CityLifeTransportation extends Component {
           />
         );
       });
-    } else {  
-      icons = null;     
+    } else {
+      icons = null;
     }
     if (title === "Accomodation") {
       showHotel = (
@@ -85,13 +83,13 @@ class CityLifeTransportation extends Component {
                   : "rotate(180deg)",
                 transition: "0.4s"
               }}
-              class="fas fa-chevron-down"
+              className="fas fa-chevron-down"
             />
           </span>
         </div>
         <div className={iconDiv} id={this.state.id}>
-          {icons}    
-          {title === "Accomodation" && <AccomodationFiles />}     
+          {icons}
+          {title === "Accomodation" && <AccomodationFiles />}
         </div>
       </div>
     );
