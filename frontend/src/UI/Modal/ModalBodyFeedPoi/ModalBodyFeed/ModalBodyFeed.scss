@@ -4,32 +4,63 @@ $color: rgb(180, 175, 175);
   padding: 3em;
 
   .formFeedbackContainer {
-    .inputName {
-      border: none;
-      border-bottom: 0.1em solid $color;
-      width: 100%;
-      display: block;
-    }
-    ::placeholder {
-      color: $color;
-      font-size: 1.3em;
-      padding-left: 0.2em;
-      letter-spacing: 1px;
-      font-weight: 100;
-    }
-    .formFlexContainer {
+    .modalSelection {
       display: flex;
       flex-wrap: wrap;
 
-      .modalSelection {
-        width: 55%;
-        border-bottom: 1px solid $color;
-        margin-right: 1em;
+      .inputName {
+        border: none;
+        border-bottom: 0.1em solid $color;
+        width: 100%;
+        display: block;
+      }
+      ::placeholder {
+        color: $color;
+        font-size: 1.3em;
+        padding-left: 0.2em;
+        letter-spacing: 1px;
+        font-weight: 100;
+      }
+      .modalSelect {
+        padding-top: 2.3em;
+        width: 56%;
+
+        select {
+          color: rgb(87, 84, 84);
+          border-bottom: 1px solid $color;
+          font-size: 1.3em;
+          width: 100%;
+          font-weight: 100;
+        }
+        select:focus {
+          outline: none;
+        }
       }
 
-      /*ako je zeleni rate slider*/
       .slidecontainer {
-        padding: 3em 1em 0;
+        width: 44%;
+        padding-top: 3em;
+
+        label {
+          color: #b4afaf;
+          font-size: 0.8em;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 850px) {
+  .formAndImg {
+    .formFeedbackContainer {
+      .modalSelection {
+        .modalSelect {
+          padding-top: 2em;
+          width: 100%;
+        }
+        .slidecontainer {
+          width: 100%;
+          padding-top: 3.2em;
+        }
       }
     }
   }

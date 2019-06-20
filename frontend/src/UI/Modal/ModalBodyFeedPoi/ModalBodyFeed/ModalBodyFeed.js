@@ -22,13 +22,14 @@ const ModalBodyFeed = props =>
             <Selection
               options={["option1", "option2", "option3"]}
               setOption={props.setOption}
+              classes={"modalSelect"}
             />
             <RateSlider />
           </div>
 
           {/* <RateSlid /> */}
         </div>
-        <TextArea />
+        <TextArea label={"Your feedback"} />
       </form>
       <ImageUpload />
     </div>

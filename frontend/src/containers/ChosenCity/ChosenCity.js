@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import "./ChosenCity.scss";
 import Modal from "../../UI/Modal/Modal";
-import ModalBodyFeedAndPOI from "../../UI/Modal/ModalBodyFeedPoi/ModalBodyFeedPoi";
+// import ModalBodyFeedAndPOI from "../../UI/Modal/ModalBodyFeedPoi/ModalBodyFeedPoi";
 import ModalHeader from "../../UI/Modal/ModalHeader/ModalHeader";
+import ModalTextArea from "../../UI/Modal/ModalTextArea/ModalTextArea";
+import TextArea from "../../UI/TextArea/TextArea";
 
 export default class ChosenCity extends Component {
   state = {
@@ -29,7 +31,17 @@ export default class ChosenCity extends Component {
           show={this.state.modalShow}
           clicked={this.modalClosedHandler}
         >
-          <ModalHeader
+          <ModalTextArea>
+            <ModalHeader
+              clicked={this.modalClosedHandler}
+              closeSpanClicked={this.modalClosedHandler}
+              title={"Add comment"}
+              save={"SAVE"}
+            />
+            <TextArea label={"Your comment"} className="modalTxtArea" />
+          </ModalTextArea>
+
+          {/* <ModalHeader
             clicked={this.modalClosedHandler}
             closeSpanClicked={this.modalClosedHandler}
             title={"City Life Feedback"}
@@ -39,7 +51,7 @@ export default class ChosenCity extends Component {
             title1={"Feedback"}
             title2={"POI"}
             setOption={this.setSelectedCategory}
-          />
+          /> */}
         </Modal>
       </div>
     );

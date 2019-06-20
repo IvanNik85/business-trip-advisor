@@ -1,18 +1,17 @@
 import React from "react";
 import "./ImageUpload.scss";
-import Icon from '../Icon/Icon'
-
-
+import Icon from "../Icon/Icon";
 
 const ImageUpload = props => {
   return (
     <div className="imageUploadContainer">
       <form action="##">
         <label htmlFor={"imageUpload"}>
-          <a style={{ cursor: "pointer" }}>
+          <a>
             <Icon iconClass={"images "} fontSize={"50px"} />
           </a>
         </label>
+
         <input
           type="file"
           name="imageUpload"

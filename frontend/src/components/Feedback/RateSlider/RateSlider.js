@@ -20,6 +20,7 @@ export default class RateSlider extends Component {
           </div>
         </div>
         <div className="divSlider">
+          <label>Your rate</label>
           <input
             className="slider"
             type="range"

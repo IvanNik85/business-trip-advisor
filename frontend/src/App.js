@@ -18,9 +18,9 @@ class App extends Component {
     hotelId: "",
     hotel: {
       data: {
-        title: "Hilton",
-        subtitle: "lallala",
-        text: "kalkalkajkjskjs",
+        title: "Hotel Hilton",
+        // subtitle: "lallala",
+        text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia nisi animi maiores dolorem quos enim! Incidunt, doloremque! Mollitia, architecto nam facilis itaque eius voluptatem, asperiores quasi delectus necessitatibus tenetur assumenda?",
         img: faker.fake("{{image.image}}"),
         score: 9
       }
@@ -34,7 +34,7 @@ class App extends Component {
   render() {
     console.log(this.state.hotelId);
     return (
-      <div className="App">
+      <div className="App">       
         <Layout>
           <Router>
             <Nav />

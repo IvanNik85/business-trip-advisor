@@ -1,6 +1,6 @@
 @import "../../index.scss";
 .containerModal {
-  border: 1px solid rgb(180, 175, 175);
+  // border: 1px solid rgb(180, 175, 175);
 
   display: block;
   width: 80%;
@@ -10,9 +10,9 @@
   z-index: 500;
   background-color: white;
 
-  box-shadow: 1px 1px 1px gray;
-  padding: 6px;
-  left: 15%;
+  //box-shadow: 1px 1px 1px gray;
+  //padding: 6px;
+  left: 25%;
   top: 20%;
   box-sizing: border-box;
   transition: all 0.3s ease-out;
@@ -43,5 +43,18 @@
 
   50% {
     opacity: 1;
+  }
+}
+
+@media (max-width: 1200px) {
+  .containerModal {
+    left: 18%;
+    top: 18%;
+  }
+}
+@media (max-width: 1000px) {
+  .containerModal {
+    left: 10%;
+    top: 10%;
   }
 }

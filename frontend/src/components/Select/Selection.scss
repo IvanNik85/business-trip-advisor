@@ -1,5 +1,10 @@
+@import "../../index.scss";
+
 select {
   border: none;
+}
+
+.selectCity {
   background-color: rgb(163, 151, 252);
   padding: 0.5em 1.2em;
   color: white;

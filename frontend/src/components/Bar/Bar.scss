@@ -3,14 +3,22 @@
   align-items: center;
   height: 10px;
   margin-top: 10px;
-}
+  line-height: 10px;
+  
+
 .barBack {
   width: 90%;
   height: 4px;
   background-color: rgb(187, 186, 186);
+  border-radius: 5px;
 }
 .bar {
   width: 90%;
   height: 4px;
-  background-color: rgb(172, 41, 95);
+  border-radius: 5px;
+  background-color: rgb(172, 41, 95);  
+}
+#score {
+  padding: 10px 20px 15px;
+}
 }
