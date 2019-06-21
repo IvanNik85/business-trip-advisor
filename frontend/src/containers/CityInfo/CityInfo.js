@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import Feedback from "../../components/Feedback/Feedback";
 import ShowHotel from "../../components/Select/ShowHotel";
 import Selection from "../../components/Select/Selection";
-import CityLifeTransportation from "../../components/CityLifeTransportation/CityLifeTransportation";
+import CityLife from "../../components/CityLifeTransportation/CityLife";
 import Icon from "../../UI/Icon/Icon";
-import Weather from "../../components/Weather/Weather";
+
 import weatherData from "../../weaterData";
 const data = ["asdasdl", "kakakka", "kakakka"];
 
@@ -51,10 +51,10 @@ export default class CityInfo extends Component {
           <div className="cHeaderRight">
             <a href="#accomodation"> ACCOMODATION</a>
             <a href="#transportation">TRANSPORT</a>
-            <a href="#cityife">CITYLIFE</a>
+            <a href="#cityLife">CITYLIFE</a>
           </div>
         </div>
-        <CityLifeTransportation
+        <CityLife
           title="Accomodation"
           contDiv="accomodation"
           iconDiv="accomodationStyle"
@@ -62,15 +62,15 @@ export default class CityInfo extends Component {
           id={9}
           data={data}
         />
-        <CityLifeTransportation
+        <CityLife
           title="Transportation"
           contDiv="transportation"
           iconDiv="transportStyle"
         />
-        <CityLifeTransportation
+        <CityLife
           title="City Life"
           contDiv="cityLife"
-          iconDiv="cityLifestyle"          
+          iconDiv="cityLifestyle"
         />
         <div className="hotelReviews">
           <div className="reviewsHeder">

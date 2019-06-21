@@ -1,0 +1,68 @@
+$color: rgb(180, 175, 175);
+.modalNewAccomodation{
+    .formAndImg {
+    position: relative;
+    padding: 2em 3em;
+       
+    form{
+
+    
+        .inputNameFullWidth {
+            border: none;
+            border-bottom: 0.1em solid $color;
+            width: 100%;
+            
+        }
+        .twoItems{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 1em auto;
+
+            .imageContainer {
+                width: 35%;
+                padding-top: 1em;
+                border: 1px solid $color;
+                height: 8.4em;
+                margin: 1em 1em .1em .5em;
+                text-align: center;
+            }
+            textarea{
+                width: 100%
+            }
+            .address{
+                width: 50%; 
+                display: inline-block; 
+            
+            .inputName {
+                border: none;
+                border-bottom: 0.1em solid $color;
+                width: 100%;
+                display: block;
+                padding: .3em;
+            
+            }
+        }
+    } 
+            ::placeholder {
+                color: $color;
+                font-size: .8em;
+                padding-left: 0.2em;
+                letter-spacing: 1px;
+                font-weight: 100;
+            }
+        
+        
+         
+
+            label {
+            color: #615d5d;
+            font-size: .8em;
+            display: block; 
+           line-height: 2em;
+            padding-top: 1em;
+            }
+        
+        }
+    }
+}

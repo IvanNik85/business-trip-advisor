@@ -1,0 +1,11 @@
+h2 {
+  display: inline-block;
+}
+
+.accomodationStyle {
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+  background-image: linear-gradient(to bottom right, #009fff, #ec2f4b);
+  // height: 200px;
+}
