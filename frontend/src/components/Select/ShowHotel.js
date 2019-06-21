@@ -18,7 +18,7 @@ export default function ShowHotel(props) {
           <Bar score={data.score} />
         </div>
         <div className="score">
-         <p><Bar score={data.score} /></p>
+         <Bar score={data.score} />
         </div>
       </div>
     </div>
