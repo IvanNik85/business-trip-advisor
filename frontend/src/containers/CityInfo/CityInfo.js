@@ -70,7 +70,7 @@ export default class CityInfo extends Component {
         <CityLifeTransportation
           title="City Life"
           contDiv="cityLife"
-          iconDiv="cityLifestyle"
+          iconDiv="cityLifestyle"          
         />
         <div className="hotelReviews">
           <div className="reviewsHeder">

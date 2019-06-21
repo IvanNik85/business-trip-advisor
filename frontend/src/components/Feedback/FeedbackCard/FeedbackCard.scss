@@ -44,29 +44,3 @@
   text-align: justify;
   font-size: 15px;
 }
-.footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  #commentsNumber i {
-    display: block;
-    font-size: 20px;
-    color: red;
-  }
-  
-}
-#commentsNumber {
-  display: flex;
-  align-items: center;
-  margin-left: 15px;
-}
-#commentsNumber p {
-  padding: 7px;
-}
-#readMore {
-  text-decoration: none;
-  margin-right: 15px;
-  font-size: 14px;
-  color: #8e8585;
-}

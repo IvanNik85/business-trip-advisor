@@ -7,7 +7,7 @@ export default function ShowHotel(props) {
   console.log(data);
   return (
     <div className="wrapElement">
-      <div className="element">      
+      <div className="element">
         <div className="img">
           <img src={data.img} alt={data.title} />
         </div>
@@ -18,7 +18,7 @@ export default function ShowHotel(props) {
           <Bar score={data.score} />
         </div>
         <div className="score">
-         <Bar score={data.score} />
+          <Bar score={data.score} />
         </div>
       </div>
     </div>
