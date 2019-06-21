@@ -1,4 +1,4 @@
-#fullWidth {
+.fullWidth {
     width: 100%;    
 
     #accomWeather  {
@@ -35,6 +35,45 @@
         .cityInfoRight {            
             flex: 1;
         }
+    }    
+}
+@media (max-width: 1260px) {
+
+    .fullWidth {
+
+        .cityInformation {
+           flex-direction: column;
+           height: 100%;
+
+            .cityInfoRight {   
+
+                .map {
+                    width: 100%;
+                    height: 500px;
+                }     
+            }
+            .cityInfoLeft {
+                .wrapElement {
+                    width: 80%;
+                    margin-left: 20px;
+                }
+            }
+        }    
+          
     }
-    
+}
+@media (max-width: 960px) { 
+    .fullWidth {
+
+        .cityInformation {
+           flex-direction: column;
+
+            .cityInfoLeft {
+                .wrapElement {
+                    width: 95%;  
+                    margin: 10px; 
+                }
+            }
+        }
+    }
 }

@@ -9,7 +9,7 @@ import AccomodationFiles from "./AccomodationFiles";
 class CityLifeTransportation extends Component {
   state = {
     id: "hidden",
-    transform: true
+    transform: true,    
   };
 
   handleClick = () => {

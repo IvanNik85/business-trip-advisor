@@ -6,7 +6,7 @@ function Bar(props) {
   return (
     <div className="wrapBar">
       <div className="barBack">
-        <div className="bar" style={{ width: score * 10 + "%" }} />
+        <div className="bar" style={{ width: score * 10 + "%" }}></div>
       </div>
       <p>{score}</p>
     </div>

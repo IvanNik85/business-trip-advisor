@@ -10,6 +10,7 @@ function Feedback() {
   let feedbackContent = [
     {
       id: 1,
+      filter: 'user-shield', 
       img: faker.fake("{{image.avatar}}"),
       name: "Milan",
       commentTitle: "Naslov Komentara",
@@ -17,6 +18,7 @@ function Feedback() {
     },
     {
       id: 2,
+      filter: 'hamburger', 
       img: faker.fake("{{image.avatar}}"),
       name: "Zoran",
       commentTitle: "Naslov Komentara",
@@ -24,6 +26,7 @@ function Feedback() {
     },
     {
       id: 3,
+      filter: 'bus', 
       img: faker.fake("{{image.avatar}}"),
       name: "Stanko",
       commentTitle: "Naslov Komentara",
