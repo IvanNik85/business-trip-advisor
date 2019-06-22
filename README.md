@@ -1,4 +1,4 @@
-# Vlada: uradiću preostale testove - za comment, feedback, provider i transportation.
+# Vlada: urađeni preostali testovi - za feedback, comment, provider (i transportation).
 
 # business-trip-advisor
 React + Node.js(Express) application that serves employees community to improve their traveling experience
