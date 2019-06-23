@@ -18,11 +18,13 @@ function Feedback() {
       comment: comment1.slice(0, 200), 
       moreComments: [
       {
+        index: 1,
         img: faker.fake("{{image.avatar}}"),
         name: 'Nikola',
         comment: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam perspiciatis reiciendis, fugit amet tenetur tempore nemo asperiores nisi rem explicabo aspernatur quas. Mollitia assumenda obcaecati deleniti molestias veniam in voluptate!'
       },
       {
+        index: 2,
         img: faker.fake("{{image.avatar}}"),
         name: 'Marko',
         comment: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam perspiciatis reiciendis, fugit amet tenetur tempore nemo asperiores nisi rem explicabo aspernatur quas. Mollitia assumenda obcaecati deleniti molestias veniam in voluptate!'
@@ -38,11 +40,13 @@ function Feedback() {
       comment: comment1.slice(0, 200),
       moreComments: [
         {
+          index: 3,
           img: faker.fake("{{image.avatar}}"),
           name: 'Zvonko',
           comment: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam perspiciatis reiciendis, fugit amet tenetur tempore nemo asperiores nisi rem explicabo aspernatur quas. Mollitia assumenda obcaecati deleniti molestias veniam in voluptate!'
         },
         {
+          index: 4,
           img: faker.fake("{{image.avatar}}"),
           name: 'Zivka',
           comment: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam perspiciatis reiciendis, fugit amet tenetur tempore nemo asperiores nisi rem explicabo aspernatur quas. Mollitia assumenda obcaecati deleniti molestias veniam in voluptate!'
@@ -59,15 +63,23 @@ function Feedback() {
       comment: comment1.slice(0, 200),
       moreComments: [
         { 
+          index: 5,
           img: faker.fake("{{image.avatar}}"),
           name: 'Zdravko',
           comment: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam perspiciatis reiciendis, fugit amet tenetur tempore nemo asperiores nisi rem explicabo aspernatur quas. Mollitia assumenda obcaecati deleniti molestias veniam in voluptate!'
         },
         { 
+          index: 6,
           img: faker.fake("{{image.avatar}}"),
           name: 'Milena',
           comment: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam perspiciatis reiciendis, fugit amet tenetur tempore nemo asperiores nisi rem explicabo aspernatur quas. Mollitia assumenda obcaecati deleniti molestias veniam in voluptate!'
-        }
+        },
+        { 
+          index: 7,
+          img: faker.fake("{{image.avatar}}"),
+          name: 'Drasko',
+          comment: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam perspiciatis reiciendis, fugit amet tenetur tempore nemo asperiores nisi rem explicabo aspernatur quas. Mollitia assumenda obcaecati deleniti molestias veniam in voluptate!'
+        },
       ]
     }
   ];

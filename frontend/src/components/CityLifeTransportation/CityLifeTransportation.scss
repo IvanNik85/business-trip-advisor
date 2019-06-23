@@ -1,5 +1,5 @@
 .cityLife, .transportation, .accomodation{
-    background-color: rgba(86, 66, 86, 1);
+    background-color: #101e3e;
     height: auto;
     width: 100%;   
     position: relative;
@@ -19,7 +19,7 @@
         justify-content: center;  
         flex-flow: row wrap; 
         text-align: center;  
-        padding-bottom: 40px;       
+        padding-bottom: 55px;    
         // overflow: hidden;  
 
         div {
@@ -30,9 +30,24 @@
             cursor: pointer;
         }
 
-        // .color0 p, .color0 i  {
-        //     color: red;
-        // }
+        .color0 p, .color0 i  {
+            color: #ecdf7c;
+        }
+        .color1 p, .color1 i  {
+            color:#89e6f5d1;
+        }
+        .color2 p, .color2 i  {
+            color: #f7a870;
+        }
+        .color3 p, .color3 i  {
+            color: #48c3bc;
+        }
+        .color4 p, .color4 i  {
+            color: #fd7878;
+        }
+        .color5 p, .color5 i  {
+            color: #c9e4be;
+        }
         i {
             color: #fff;
             font-size: 25px;
@@ -58,7 +73,7 @@
     background-color: rgb(37, 145, 109);
 }
 .transportation {
-    background-color: rgb(247, 59, 59);
+    background-color: #033f5a;
 }
 #hidden {
     display: none; 

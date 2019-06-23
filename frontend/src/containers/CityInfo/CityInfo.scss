@@ -1,49 +1,153 @@
 @import "../../index.scss";
 .cityDiv {
-  .cityHeader {
-    display: flex;
-    .cHeaderLeft {
-      display: flex;
-      flex: 1;
-    }
-    .cHeaderRight {
-      flex: 1;
-    }
-  }
-  .aInfoDiv {
-    border: 1px solid red;
-    display: flex;
-    align-items: center;
-    .aInfoLeft {
-      flex: 1;
-    }
-    .aInfoRight {
-      flex: 1;
-    }
-  }
-  .cityInfo {
-    display: flex;
-    height: 100vh;
-    background-color: grey;
-    border: 1px solid black;
 
-    .cInfoLeft {
-      flex: 4;
-    }
-    .cInfoRight {
-      height: 400px;
-      flex: 1;
-    }
-  }
-  .hotelReviews {
-    .reviewsHeder {
-      display: flex;
-    }
-  }
+	.cityHeader {
+		display: flex;
+		flex-flow: row wrap;
+		background-color:#e6e880;
+
+		.cHeaderLeft {
+			display: flex;
+			flex: 1;			
+
+			.headerCityInfo {
+				display: flex;
+				align-items: center;
+				flex: 1;
+				padding-left: 40px;
+			}
+
+			h3 {
+				font-size: 25px;
+				color: #121361;
+			}
+
+			select {
+				width: 200px;
+				font-size: 20px;
+				background-color: transparent;
+				font-weight: bold;
+				color: #121361;
+				border-bottom: 2px solid#121361;
+			}
+
+			select:focus {
+				outline: none;
+			}
+
+			option {
+				background-color: #141d4e;
+				color: #fff;
+		 }	
+		}
+		.cHeaderRight {
+			display: flex;
+			flex-flow: row wrap;
+			justify-content: space-evenly;
+			align-items: center;			
+			flex: 1;
+
+			a {
+				text-decoration: none;
+				font-weight: 700;
+				color:#121361;
+			}			
+		}
+	}
+	.aInfoDiv {
+		border: 1px solid red;
+		display: flex;
+		align-items: center;
+
+		.aInfoLeft {
+			flex: 1;
+		}
+
+		.aInfoRight {
+			flex: 1;
+		}
+	}
+	.cityInfo {
+		display: flex;
+		height: 100vh;
+		background-color: grey;
+		border: 1px solid black;
+
+		.cInfoLeft {
+			flex: 4;
+		}
+		.cInfoRight {
+			height: 400px;
+			flex: 1;
+		}
+	}
+	.hotelReviews {
+		position: relative;
+
+		.reviewsHeder {
+			display: flex;
+			background-color: #197175;
+			color: #fff;
+
+			h2 {
+				font-size: 43px;
+				font-weight: normal;
+			}
+
+			select {
+				background-color: transparent;
+				border-bottom: 2px solid #fff;
+				width: 300px;
+				color: #fff;
+				font-size: 17px;				
+			}
+			
+			select:focus {
+				outline: none;			
+			}
+			option {
+				 background-color: #141d4e;
+			}	
+
+			.addComment {
+				position: absolute;
+				width: 55px;
+				height: 55px;
+				border-radius: 50%;
+				color: #000;
+				// background-color: #8ba245;
+				background-color: #e6e880;
+				font-size: 40px;
+				border: none;
+				box-shadow: 4px 4px 12px rgb(48, 47, 47);
+				top: -30px;
+				right: 40px;
+				transform: rotate(-90deg);
+				transition: 0.4s;
+			}
+			.addComment:hover {
+				background-color: #e6e880;
+				color: rgb(0, 0, 0);
+				transform: rotate(90deg);
+				transition: 0.4s;
+				cursor: pointer;
+			}
+		}
+	}
 }
 
 .flex {
-  flex: 1;
+	flex: 1;
+	padding: 40px;  
+}
+.flex1 {
+	flex: 1;
+	padding: 40px;  
+	h3 {
+		font-weight: bold;
+		padding: 4px;
+		font-size: 16px
+	}
 }
 
 /* Ikone*/

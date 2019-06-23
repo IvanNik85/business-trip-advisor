@@ -8,6 +8,7 @@ import Icon from '../../../../UI/Icon/Icon'
 import CommentDate from '../../../../UI/CommentDate/CommentDate'
 import FooterLeft from '../FooterComponents/FooterLeft'
 import Bar from '../../../Bar/Bar'
+import '../ReadMoreModal/ReadMoreModal.scss'
 
 class FooterRight extends React.Component {
     state = {
@@ -16,14 +17,13 @@ class FooterRight extends React.Component {
     modalOpenHandler = () => {
         this.setState({ modalShow: true });
     };
-
     modalClosedHandler = () => {
         this.setState({ modalShow: false });
     };
     render() {
         const { img, name, date, commentTitle, comment, filter, moreComments } = this.props.data
         let additionalComments = moreComments.map(item => (
-            <FeedbackMain key={item.id} data={item}>
+            <FeedbackMain key={item.index} data={item}>
                 <CommentDate date={'2017-05-12'} />
             </FeedbackMain>
           ));

@@ -5,7 +5,8 @@ import Feedback from "../../components/Feedback/Feedback";
 import ShowHotel from "../../components/Select/ShowHotel";
 import Selection from "../../components/Select/Selection";
 import CityLifeTransportation from "../../components/CityLifeTransportation/CityLifeTransportation";
-import Icon from "../../UI/Icon/Icon";
+// import Icon from "../../UI/Icon/Icon";
+import Button from '../../UI/Button/Button'
 import Weather from "../../components/Weather/Weather";
 import weatherData from "../../weaterData";
 const data = ["asdasdl", "kakakka", "kakakka"];
@@ -36,9 +37,9 @@ export default class CityInfo extends Component {
       <div className="cityDiv">
         <div className="cityHeader">
           <div className="cHeaderLeft">
-            <div className="flex">
+            <div className="headerCityInfo">
               <h3>Ocu da nadjem info za grad: </h3>
-              <h1>{cityName}City</h1>
+              <h1>{cityName}</h1>
             </div>
             <div className="flex">
               <Selection
@@ -75,20 +76,25 @@ export default class CityInfo extends Component {
         <div className="hotelReviews">
           <div className="reviewsHeder">
             <div className="flex">
-              <h2>Reviews</h2>
-              <Selection
-                options={["latest", "date", "score"]}
-                setOption={this.setRewOption}
-                classes="rewSelect"
-              />
+              <h2>Reviews</h2>              
             </div>
-            <div className="flex">
-              <Icon
-                iconClass={"comment-medical"}
+            <div className="flex1">
+              {/* <Icon
+                iconClass={"plus-circle"}
                 color={"addComentIcon"}
                 fontSize={60}
                 clicked={() => console.log("radi ikon klik")}
-              />
+              />              */}
+              <Button classes={'addComment'} 
+                  clicked={() => console.log("radi ikon klik")}>                  
+                    +
+              </Button> 
+                <h3>SORT</h3>
+                <Selection
+                  options={["LATEST", "DATE", "SCORE"]}
+                  setOption={this.setRewOption}
+                  classes="rewSelect"
+                />
             </div>
           </div>
 

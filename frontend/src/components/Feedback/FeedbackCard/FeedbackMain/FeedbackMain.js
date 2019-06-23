@@ -4,7 +4,7 @@ import "../FeedbackCard.scss";
 export default function FeedbackMain(props) {
     let { img, name, commentTitle, comment, moreComments } = props.data;
     return (
-        <div>
+        <div className="feedbackMain">
             <div className="nameTitleBar">
                 <img id="userImg" src={img} alt="userImage" />
                 <div className="nameTitle">
