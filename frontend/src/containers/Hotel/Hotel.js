@@ -1,11 +1,13 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import * as actionTypes from "../../store/actions";
 import "./Hotel.scss";
 import Feedback from "../../components/Feedback/Feedback";
 import Selection from "../../components/Select/Selection";
 import Weather from "../../components/Weather/Weather";
 import weatherData from "../../weaterData";
 
-export default class Hotel extends Component {
+class Hotel extends Component {
   state = {
     option: "",
     weatherData
@@ -16,10 +18,10 @@ export default class Hotel extends Component {
   render() {
     return (
       <div className="hotelDiv">
+        Hotel in city {this.props.cityName}
         <div className="hotelHeader">
           <h1>Hotel header</h1>
         </div>
-
         <div className="hotelInfo">
           <div className="hInfoLeft">
             <div className="flex">
@@ -64,3 +66,22 @@ export default class Hotel extends Component {
     );
   }
 }
+const mapStateToProps = state => {
+  return {
+    cityName: state.selectedCity,
+    modalShow: state.modalShow
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    setSelectedCity: city =>
+      dispatch({ type: actionTypes.SET_SELECTED_CITY, cityName: city }),
+    modalOpen: () => dispatch({ type: actionTypes.MODAL_OPEN }),
+    modalClose: () => dispatch({ type: actionTypes.MODAL_CLOSE })
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Hotel);
