@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actionTypes from "./store/actions";
+import { logedOut } from "./store/actions";
 import faker from "faker";
 import Hotel from "./containers/Hotel/Hotel";
 import Layout from "./UI/Layout/Layout";
@@ -99,7 +100,7 @@ class App extends Component {
 }
 const mapDispatchToProps = dispatch => {
   return {
-    logOut: () => dispatch({ type: actionTypes.LOGED_OUT })
+    logOut: () => dispatch(logedOut())
   };
 };
 

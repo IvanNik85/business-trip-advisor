@@ -12,6 +12,15 @@ export const logedIn = () => {
     type: LOGED_IN
   };
 };
+export const logedOut = () => {
+  return {
+    type: LOGED_OUT
+  };
+};
+
+export const logOut = dispatch => {
+  return dispatch => dispatch(logedOut());
+};
 
 export const setSelectedCity = city => {
   return {
@@ -19,3 +28,20 @@ export const setSelectedCity = city => {
     cityName: city
   };
 };
+
+/*export function itemsFetchData(url) {
+    return (dispatch) => {
+        dispatch(itemsIsLoading(true));
+        fetch(url)
+            .then((response) => {
+                if (!response.ok) {
+                    throw Error(response.statusText);
+                }
+                dispatch(itemsIsLoading(false));
+                return response;
+            })
+            .then((response) => response.json())
+            .then((items) => dispatch(itemsFetchDataSuccess(items)))
+            .catch(() => dispatch(itemsHasErrored(true)));
+    };
+} */
