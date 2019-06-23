@@ -12,8 +12,6 @@ import Home from "./containers/Home/Home";
 import AdminPanel from "./containers/AdminPanel/AdminPanel";
 import axios from "axios";
 
-axios.defaults.withCredentials = true;
-
 class App extends Component {
   state = {
     admin: true,
@@ -50,6 +48,16 @@ class App extends Component {
       ]
     },
     cityList: ["Belgrade", "Paris", "London", "Surdulica", "Paramaribo"]
+  };
+
+  componentDidMount() {
+    axios({
+      method: 'get',
+      url: "http://localhost:9000/cities",
+      headers: {
+        "Authorization": `Bearer ${"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZDBmNWY3OGU1NTUzODMyYzk0YmU0YjYiLCJpYXQiOjE1NjEyODg1Njh9.goSiUq8xBXyDHwjoWcW90F3MU5culYpllmQF222Nt1g"}`
+      }
+    }).then(res => console.log(res.data));
   };
 
   setHotelID = value => {
