@@ -1,11 +1,14 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import * as actionTypes from "../../store/actions";
+
 import Overlay from "../../components/Login/Overlay/Overlay";
 import OverlayPanel from "../../components/Login/Overlay/OverlayPanel";
 import Form from "../../components/Login/Form/Form";
 import Button from "../../UI/Button/Button";
 import "./Login.scss";
 
-export default class Login extends Component {
+class Login extends Component {
   state = {
     leftPanel: false,
     rightPanel: false
@@ -14,6 +17,13 @@ export default class Login extends Component {
   setRightActive = () => {
     this.setState(prevState => ({ rightPanel: !prevState.rightPanel }));
   };
+
+  componentWillUpdate(prevProps) {
+    if (this.props.isLogedIn !== prevProps.isLogedIn) {
+      this.props.history.push("/city-info");
+    }
+  }
+
   render() {
     return (
       <div
@@ -31,6 +41,8 @@ export default class Login extends Component {
           classes="sign-in-container"
           title="Sign in"
           buttontext="Sign In"
+          clicked={this.props.logIn}
+          isLogedIn={this.props.isLogedIn}
         />
 
         <Overlay>
@@ -57,3 +69,19 @@ export default class Login extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    isLogedIn: state.isLogedIn
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    logIn: () => dispatch({ type: actionTypes.LOGED_IN })
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Login);

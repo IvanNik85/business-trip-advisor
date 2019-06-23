@@ -9,7 +9,7 @@ const Form = props => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  let { title, classes, buttontext } = props;
+  let { title, classes, buttontext, clicked, isLogedIn } = props;
 
   //button onClick calls fecth or axios and sends {name:name, email:email,password :password} ili tako nesto
 
@@ -39,7 +39,7 @@ const Form = props => {
           />
         ) : null}
 
-        <Button>{buttontext}</Button>
+        <Button clicked={clicked}>{buttontext}</Button>
       </form>
     </div>
   );

@@ -14,13 +14,6 @@ export default class ChosenCity extends Component {
   setSelectedCategory = value => {
     this.setState({ selectedCategory: value });
   };
-  modalOpenHandler = () => {
-    this.setState({ modalShow: true });
-  };
-
-  modalClosedHandler = () => {
-    this.setState({ modalShow: false });
-  };
 
   render() {
     return (

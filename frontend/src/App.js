@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import * as actionTypes from "./store/actions";
 import faker from "faker";
 import Hotel from "./containers/Hotel/Hotel";
 import Layout from "./UI/Layout/Layout";
@@ -61,7 +63,7 @@ class App extends Component {
       <div className="App">
         <Layout>
           <Router>
-            <Nav admin={this.state.admin} />
+            <Nav admin={this.state.admin} logOut={this.props.logOut} />
             <Switch>
               <Route exact path="/" component={Login} />
               <Route exact path="/home" component={Home} />
@@ -95,5 +97,13 @@ class App extends Component {
     );
   }
 }
+const mapDispatchToProps = dispatch => {
+  return {
+    logOut: () => dispatch({ type: actionTypes.LOGED_OUT })
+  };
+};
 
-export default App;
+export default connect(
+  null,
+  mapDispatchToProps
+)(App);

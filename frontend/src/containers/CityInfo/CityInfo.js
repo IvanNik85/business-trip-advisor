@@ -1,28 +1,30 @@
 import "./CityInfo.scss";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import * as actionTypes from "../../store/actions";
+
 import Feedback from "../../components/Feedback/Feedback";
 import ShowHotel from "../../components/Select/ShowHotel";
 import Selection from "../../components/Select/Selection";
 import CityLife from "../../components/CityLifeTransportation/CityLife";
 import Icon from "../../UI/Icon/Icon";
+import Modal from "../../UI/Modal/Modal";
+import ModalBodyFeedAndPOI from "../../UI/Modal/ModalBodyFeedPoi/ModalBodyFeedPoi";
+import ModalHeader from "../../UI/Modal/ModalHeader/ModalHeader";
+import ModalTextArea from "../../UI/Modal/ModalTextArea/ModalTextArea";
+import TextArea from "../../UI/TextArea/TextArea";
 
 import weatherData from "../../weaterData";
-const data = ["asdasdl", "kakakka", "kakakka"];
 
-export default class CityInfo extends Component {
+class CityInfo extends Component {
   state = {
-    selectedCity: "",
     accomodation: [],
     weatherData,
     rewOption: ""
   };
 
-  setSelectedCity = value => {
-    this.setState({ selectedCity: value }, this.getAccomodations());
-  };
-
-  getAccomodations = () => {
+  getAccomodations = data => {
     //poziv da spusti sa baze 4 top rated akomodations za grad koji je stejt!
     this.setState({ accomodation: data });
   };
@@ -31,19 +33,28 @@ export default class CityInfo extends Component {
   };
 
   render() {
-    const { cityName, cityList, setId, data } = this.props;
+    const {
+      cityName,
+      cityList,
+      setSelectedCity,
+      setId,
+      data,
+      modalShow,
+      modalOpen,
+      modalClose
+    } = this.props;
     return (
       <div className="cityDiv">
         <div className="cityHeader">
           <div className="cHeaderLeft">
             <div className="flex">
               <h3>Ocu da nadjem info za grad: </h3>
-              <h1>{cityName}City</h1>
+              <h1>{cityName}</h1>
             </div>
             <div className="flex">
               <Selection
                 options={cityList}
-                setOption={this.setSelectedCity}
+                setOption={setSelectedCity}
                 classes={"selectCity"}
               />
             </div>
@@ -87,14 +98,51 @@ export default class CityInfo extends Component {
                 iconClass={"comment-medical"}
                 color={"addComentIcon"}
                 fontSize={60}
-                clicked={() => console.log("radi ikon klik")}
+                clicked={modalOpen}
               />
             </div>
           </div>
 
           <Feedback />
+          <Modal
+            style={{ "z-index": 50 }}
+            show={modalShow}
+            clicked={modalClose}
+          >
+            <ModalHeader
+              clicked={modalClose}
+              closeSpanClicked={modalClose}
+              title={"City Life Feedback"}
+              save={"SAVE"}
+            />
+            <ModalBodyFeedAndPOI
+              title1={"Feedback"}
+              title2={"POI"}
+              setOption={this.setSelectedCategory}
+            />
+          </Modal>
         </div>
       </div>
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    cityName: state.selectedCity,
+    modalShow: state.modalShow
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    setSelectedCity: city =>
+      dispatch({ type: actionTypes.SET_SELECTED_CITY, cityName: city }),
+    modalOpen: () => dispatch({ type: actionTypes.MODAL_OPEN }),
+    modalClose: () => dispatch({ type: actionTypes.MODAL_CLOSE })
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CityInfo);
