@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actionTypes from "../../store/actions";
+import { setSelectedCity } from "../../store/actions";
 
 import Feedback from "../../components/Feedback/Feedback";
 import ShowHotel from "../../components/Select/ShowHotel";
@@ -135,8 +136,7 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    setSelectedCity: city =>
-      dispatch({ type: actionTypes.SET_SELECTED_CITY, cityName: city }),
+    setSelectedCity: city => dispatch(setSelectedCity(city)),
     modalOpen: () => dispatch({ type: actionTypes.MODAL_OPEN }),
     modalClose: () => dispatch({ type: actionTypes.MODAL_CLOSE })
   };
