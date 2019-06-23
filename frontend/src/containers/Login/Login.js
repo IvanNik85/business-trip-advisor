@@ -23,7 +23,7 @@ class Login extends Component {
       this.props.history.push("/city-info");
     }
   }
-
+  /* ovde ce biti zapravo f koja proverava login na klik dugmeta i ako je ok onda poziva this.props.logIn a ona ce kao metod ove klase da se preko props salje dugmetu */
   render() {
     return (
       <div
