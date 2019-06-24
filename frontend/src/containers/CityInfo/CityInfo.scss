@@ -1,21 +1,22 @@
 @import "../../index.scss";
-.cityDiv {
+.cityDiv {	
 
 	.cityHeader {
+		// background: url('../../images/panorama.jpg') no-repeat center;
 		display: flex;
 		flex-flow: row wrap;
-		background-color:#e6e880;
+		background-color:rgba(255,255,255, .6);			
 
 		.cHeaderLeft {
 			display: flex;
 			flex: 1;			
 
-			.headerCityInfo {
-				display: flex;
-				align-items: center;
-				flex: 1;
-				padding-left: 40px;
-			}
+			// .headerCityInfo {
+			// 	display: flex;
+			// 	align-items: center;
+			// 	flex: 1;
+			// 	padding-left: 40px;
+			// }
 
 			h3 {
 				font-size: 25px;
@@ -51,7 +52,7 @@
 				text-decoration: none;
 				font-weight: 700;
 				color:#121361;
-			}			
+			}				
 		}
 	}
 	.aInfoDiv {
@@ -107,36 +108,21 @@
 			}
 			option {
 				 background-color: #141d4e;
-			}	
-
+			}				
 			.addComment {
-				position: absolute;
-				width: 55px;
-				height: 55px;
-				border-radius: 50%;
-				color: #000;
-				// background-color: #8ba245;
-				background-color: #e6e880;
-				font-size: 40px;
-				border: none;
-				box-shadow: 4px 4px 12px rgb(48, 47, 47);
-				top: -30px;
-				right: 40px;
-				transform: rotate(-90deg);
-				transition: 0.4s;
+				@include coment(-30px)
 			}
 			.addComment:hover {
-				background-color: #e6e880;
-				color: rgb(0, 0, 0);
-				transform: rotate(90deg);
-				transition: 0.4s;
-				cursor: pointer;
+				@include comentHover;
 			}
 		}
 	}
 }
 
 .flex {
+	display: flex;
+	flex-flow: row wrap;
+	align-items: center;
 	flex: 1;
 	padding: 40px;  
 }
@@ -152,4 +138,17 @@
 
 /* Ikone*/
 .color0 {
+}
+
+.cityDiv::after {
+	content: "";
+	background: url('../../images/panorama.jpg') no-repeat center;	
+	background-size: cover;
+	position: fixed;
+	opacity: 0.4;
+	top: 0; 
+	left: 0;
+	bottom: 0;
+	right: 0;	
+	z-index: -1;
 }

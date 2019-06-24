@@ -10,11 +10,13 @@ import Nav from "./components/Nav/Nav";
 import Accomodation from "./containers/Accomodation/Accomodation";
 import Home from "./containers/Home/Home";
 import axios from "axios";
+import AdminPanel from './containers/AdminPanel/AdminPanel'
 
 axios.defaults.withCredentials = true;
 
 class App extends Component {
   state = {
+    admin: true,
     hotelId: "",
     hotel: {
       data: [
@@ -40,7 +42,7 @@ class App extends Component {
           // subtitle: "lallala",
           text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia nisi animi maiores dolorem quos enim! Incidunt, doloremque! Mollitia, architecto nam facilis itaque eius voluptatem, asperiores quasi delectus necessitatibus tenetur assumenda?",
           img: faker.fake("{{image.image}}"),
-          score: 8
+          score: 4
         } 
     ]
     },
@@ -56,12 +58,13 @@ class App extends Component {
       <div className="App">       
         <Layout>
           <Router>
-            <Nav />
+            <Nav admin={this.state.admin}/>
             <Switch>
               <Route exact path="/" component={Login} />
               <Route exact path="/home" component={Home} />
               <Route exact path="/chosen-city" component={ChosenCity} />
               <Route exact path="/accomodation" component={Accomodation} />
+              <Route exact path="/admin" component={AdminPanel} />
               <Route
                 exact
                 path="/hotel"

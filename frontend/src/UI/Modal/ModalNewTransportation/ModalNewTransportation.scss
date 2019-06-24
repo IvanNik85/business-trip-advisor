@@ -1,0 +1,54 @@
+@import '../../../index.scss';
+$color: rgb(180, 175, 175);
+
+.modalNewAccomodation{
+    width: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+.modalSelect select{
+    padding-top: 1em;
+    border-bottom: 0.1em solid $color;
+}
+select:focus{
+    outline: none;
+}
+.button {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: $yellow;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+   // font-size: 28px;
+    padding: .5em;
+    // width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 10px;
+    vertical-align: middle;
+  }
+  
+  .button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: -2px;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  .button:hover span {
+    padding-right: 15px;
+  }
+  
+  .button:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+}

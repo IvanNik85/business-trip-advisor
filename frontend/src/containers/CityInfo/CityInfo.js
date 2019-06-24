@@ -37,22 +37,20 @@ export default class CityInfo extends Component {
       <div className="cityDiv">
         <div className="cityHeader">
           <div className="cHeaderLeft">
-            <div className="headerCityInfo">
-              <h3>Ocu da nadjem info za grad: </h3>
-              <h1>{cityName}</h1>
-            </div>
             <div className="flex">
+              <h3>Hocu da nadjem info za grad: </h3>    
               <Selection
                 options={cityList}
                 setOption={this.setSelectedCity}
                 classes={"selectCity"}
-              />
-            </div>
+              />  
+            </div>    
+            {/* <h1>{cityName}CITY</h1>       */}
           </div>
           <div className="cHeaderRight">
             <a href="#accomodation"> ACCOMODATION</a>
             <a href="#transportation">TRANSPORT</a>
-            <a href="#cityife">CITYLIFE</a>
+            <a href="#cityLife">CITYLIFE</a>
           </div>
         </div>
         <CityLifeTransportation

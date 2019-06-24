@@ -9,6 +9,9 @@
 
     .logo {
         flex: 1;
+        background-image: url('./BTA2.png');
+        background-repeat: no-repeat;
+        background-size: contain;
     }
     .links {
         flex: 2;
@@ -22,6 +25,10 @@
         line-height: 40px;
         text-align: center;
     }
+    a:hover {
+        color: rgb(231, 131, 95);
+        transition: 0.2s;
+    }		
     h3 {
         display: inline-block;
     }

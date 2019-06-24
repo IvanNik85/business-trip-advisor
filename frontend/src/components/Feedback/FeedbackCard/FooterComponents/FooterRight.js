@@ -9,6 +9,8 @@ import CommentDate from '../../../../UI/CommentDate/CommentDate'
 import FooterLeft from '../FooterComponents/FooterLeft'
 import Bar from '../../../Bar/Bar'
 import '../ReadMoreModal/ReadMoreModal.scss'
+import Backdrop from '../../../../UI/Modal/Backdrop'
+import Button from '../../../../UI/Button/Button'
 
 class FooterRight extends React.Component {
     state = {
@@ -23,7 +25,7 @@ class FooterRight extends React.Component {
     render() {
         const { img, name, date, commentTitle, comment, filter, moreComments } = this.props.data
         let additionalComments = moreComments.map(item => (
-            <FeedbackMain key={item.index} data={item}>
+            <FeedbackMain key={item.id} data={item}>
                 <CommentDate date={'2017-05-12'} />
             </FeedbackMain>
           ));
@@ -32,7 +34,7 @@ class FooterRight extends React.Component {
                 <a href="##" id="readMore" onClick={this.modalOpenHandler}>
                     READ MORE
                 </a>
-                <Modal
+                <Backdrop
                     style={{ "z-index": 50 }}
                     show={this.state.modalShow}
                     clicked={this.modalClosedHandler}
@@ -58,9 +60,12 @@ class FooterRight extends React.Component {
                             <CommentDate date={'2017-05-12'} />
                         </FeedbackMain> */}
                         {additionalComments}
-                    </ModalTextArea>
-
-                </Modal>
+                        <Button classes={'addComment'} 
+                            clicked={() => console.log("radi ikon klik")}>                  
+                            +
+                        </Button> 
+                    </ModalTextArea>  
+                </Backdrop>
                 
             </div>
         )

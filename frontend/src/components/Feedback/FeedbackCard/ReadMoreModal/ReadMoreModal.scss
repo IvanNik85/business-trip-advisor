@@ -1,3 +1,4 @@
+@import "../../../../index.scss";
 * {
     padding: 0;
     margin: 0;
@@ -8,12 +9,18 @@
     position: relative;
 
     .containerModal {       
-        position: absolute;
-        width: 100vh;
+        position: absolute;       
+        width: 100%;       
         left: 50%;
-        top: 0;
-        transform: translate(-50%, -50%);
-       
+        top: 50%;
+        transform: translate(-50%, -50%);  
+        
+        .feedbackMain {
+            padding: 15px;
+        }  
+        .comments ~ .feedbackMain {
+            padding: 0 15px 15px;
+        }         
         
         .comments ~ .feedbackMain > .nameTitleBar  {   
             .nameTitle {            
@@ -25,7 +32,7 @@
                 }
                 p {
                     position: absolute; 
-                    top: 25px;
+                    top: 20px;
                     right: 0;
                 }
             }
@@ -48,11 +55,18 @@
             background-color: #e9e7e7;
         }
         .footer {
+            padding: 0 10px 10px 15px;
             i {
                 padding: 0 30px 10px 0;
             }
         }
     }
+}
+.addComment {
+    @include coment(30px)
+}
+.addComment:hover {
+    @include comentHover;
 }
 @media (max-width: 770px) {
     
