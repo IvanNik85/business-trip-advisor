@@ -53,9 +53,9 @@ class App extends Component {
   componentDidMount() {
     axios({
       method: 'get',
-      url: "http://localhost:9000/cities",
+      url: "https://js1plus1-api.herokuapp.com/cities",
       headers: {
-        "Authorization": `Bearer ${"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZDBmNWY3OGU1NTUzODMyYzk0YmU0YjYiLCJpYXQiOjE1NjEyODg1Njh9.goSiUq8xBXyDHwjoWcW90F3MU5culYpllmQF222Nt1g"}`
+        "Authorization": `Bearer ${"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZDEwOWNkYjc0NWM3YTAwMTc5ZTY3ZGEiLCJpYXQiOjE1NjEzNzAzODl9.j9sjeas4mfXrAmVtVCAOIS7au6wq1o3qxOJ315dkzVk"}`
       }
     }).then(res => console.log(res.data));
   };
