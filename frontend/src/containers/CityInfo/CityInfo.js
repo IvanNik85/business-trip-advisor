@@ -1,19 +1,22 @@
 import "./CityInfo.scss";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import * as actionTypes from "../../store/actions/actions";
+import { setSelectedCity } from "../../store/actions/actions";
+import axios from "axios";
+
 import Feedback from "../../components/Feedback/Feedback";
 import ShowHotel from "../../components/Select/ShowHotel";
 import Selection from "../../components/Select/Selection";
 import CityLife from "../../components/CityLifeTransportation/CityLife";
 import Icon from "../../UI/Icon/Icon";
-import axios from "axios";
 
 import weatherData from "../../weaterData";
 const data = ["asdasdl", "kakakka", "kakakka"];
 
-export default class CityInfo extends Component {
+class CityInfo extends Component {
   state = {
-    selectedCity: "",
     cityList: [],
     accomodation: [],
     weatherData,
@@ -30,8 +33,8 @@ export default class CityInfo extends Component {
       }
     }).then(res => {
       let cities = res.data;
-      let citiNames = cities.map(item => item.name);
-      this.setState({ cityList: citiNames });
+      let cityListNames = cities.map(item => item.name);
+      this.setState({ cityList: cityListNames });
     });
   }
 
@@ -48,19 +51,19 @@ export default class CityInfo extends Component {
   };
 
   render() {
-    const { cityName, setId, data } = this.props;
+    const { cityName, setSelectedCity, setId, data } = this.props;
     return (
       <div className="cityDiv">
         <div className="cityHeader">
           <div className="cHeaderLeft">
             <div className="flex">
               <h3>Ocu da nadjem info za grad: </h3>
-              <h1>{cityName}City</h1>
+              <h1>{cityName}</h1>
             </div>
             <div className="flex">
               <Selection
                 options={this.state.cityList}
-                setOption={this.setSelectedCity}
+                setOption={setSelectedCity}
                 classes={"selectCity"}
               />
             </div>
@@ -115,3 +118,22 @@ export default class CityInfo extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    cityName: state.selectedCity,
+    modalShow: state.modalShow
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    setSelectedCity: city => dispatch(setSelectedCity(city)),
+    modalOpen: () => dispatch({ type: actionTypes.MODAL_OPEN }),
+    modalClose: () => dispatch({ type: actionTypes.MODAL_CLOSE })
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CityInfo);

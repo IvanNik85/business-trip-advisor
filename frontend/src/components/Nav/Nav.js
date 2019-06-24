@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import LogOut from "../LogOut/LogOut";
 
 export default function Nav(props) {
-  const { user = "Pera", logout, admin } = props;
+  const { user = "Pera", admin } = props;
   let adminPanel = null;
   if (admin) {
     adminPanel = <Link to="/admin">Admin Panel </Link>;
@@ -18,9 +19,10 @@ export default function Nav(props) {
         <Link to="/city-info">City info </Link>
         <Link to="/accomodation">Accomodation </Link>
         {adminPanel}
+        <LogOut clicked={props.clicked} />
       </div>
       <div>
-        <h3>Welcome, {user} </h3> <span>{logout}</span>
+        <h3>Welcome, {user} </h3>
       </div>
     </div>
   );

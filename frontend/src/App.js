@@ -10,6 +10,9 @@ import Nav from "./components/Nav/Nav";
 import Accomodation from "./containers/Accomodation/Accomodation";
 import Home from "./containers/Home/Home";
 import AdminPanel from "./containers/AdminPanel/AdminPanel";
+import { connect } from "react-redux";
+import * as actionTypes from "./store/actions/actions";
+import { logedOut } from "./store/actions/actions";
 import axios from "axios";
 
 class App extends Component {
@@ -50,35 +53,32 @@ class App extends Component {
     cityList: ["Belgrade", "Paris", "London", "Surdulica", "Paramaribo"]
   };
 
-  componentDidMount() {
-    axios({
-      method: "post",
-      url: "https://js1plus1-api.herokuapp.com/users/login",
-      /* headers: {
-        "Authorization": `Bearer ${"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZDEwOWNkYjc0NWM3YTAwMTc5ZTY3ZGEiLCJpYXQiOjE1NjEzNzAzODl9.j9sjeas4mfXrAmVtVCAOIS7au6wq1o3qxOJ315dkzVk"}`
-      }*/
-      data: {
-        email: "joka@gmail.com",
-        password: "joka1234"
-      }
-    }).then(res => {
-      let token = res.data.token;
-      localStorage.setItem("token", token);
-
-      return token;
-    });
-  }
-
   setHotelID = value => {
     this.setState({ hotelId: value });
   };
+  logingOut = () => {
+    let token = localStorage.getItem("token");
+    console.log(token);
+    axios({
+      method: "post",
+      url: "https://js1plus1-api.herokuapp.com/users/logout",
+      data: token
+    }).then(res => {
+      console.log(res);
+      this.props.logOut();
+    });
+  };
   render() {
+    let nav = null;
+    if (this.props.isLogedIn) {
+      nav = <Nav admin={this.state.admin} clicked={this.logingOut} />;
+    }
     console.log(this.state.hotelId);
     return (
       <div className="App">
         <Layout>
           <Router>
-            <Nav admin={this.state.admin} />
+            {nav}
             <Switch>
               <Route exact path="/" component={Login} />
               <Route exact path="/home" component={Home} />
@@ -112,5 +112,16 @@ class App extends Component {
     );
   }
 }
+const mapStateToProps = state => {
+  return { isLogedIn: state.isLogedIn };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    logOut: () => dispatch(logedOut())
+  };
+};
 
-export default App;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
