@@ -25,6 +25,21 @@ class CityInfo extends Component {
     rewOption: ""
   };
 
+ componentDidMount() {
+    let token = localStorage.getItem("token");
+    axios({
+      method: "get",
+      url: "https://js1plus1-api.herokuapp.com/cities",
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }).then(res => {
+      let cities = res.data;
+      let citiNames = cities.map(item => item.name);
+      this.setState({ cityList: citiNames });
+    });
+  }
+
   getAccomodations = data => {
     //poziv da spusti sa baze 4 top rated akomodations za grad koji je stejt!
     this.setState({ accomodation: data });
