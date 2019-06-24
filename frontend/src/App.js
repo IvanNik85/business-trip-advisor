@@ -58,6 +58,21 @@ class App extends Component {
   setHotelID = value => {
     this.setState({ hotelId: value });
   };
+//login
+ componentDidMount() {
+    let token = localStorage.getItem("token");
+    axios({
+      method: "get",
+      url: "https://js1plus1-api.herokuapp.com/cities",
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }).then(res => {
+      let cities = res.data;
+      let citiNames = cities.map(item => item.name);
+      this.setState({ cityList: citiNames });
+    });
+  }
   render() {
     console.log(this.state.hotelId);
     return (
