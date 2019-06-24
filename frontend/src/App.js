@@ -52,13 +52,22 @@ class App extends Component {
 
   componentDidMount() {
     axios({
-      method: 'get',
-      url: "https://js1plus1-api.herokuapp.com/cities",
-      headers: {
+      method: "post",
+      url: "https://js1plus1-api.herokuapp.com/users/login",
+      /* headers: {
         "Authorization": `Bearer ${"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZDEwOWNkYjc0NWM3YTAwMTc5ZTY3ZGEiLCJpYXQiOjE1NjEzNzAzODl9.j9sjeas4mfXrAmVtVCAOIS7au6wq1o3qxOJ315dkzVk"}`
+      }*/
+      data: {
+        email: "joka@gmail.com",
+        password: "joka1234"
       }
-    }).then(res => console.log(res.data));
-  };
+    }).then(res => {
+      let token = res.data.token;
+      localStorage.setItem("token", token);
+
+      return token;
+    });
+  }
 
   setHotelID = value => {
     this.setState({ hotelId: value });

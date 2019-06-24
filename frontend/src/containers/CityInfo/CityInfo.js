@@ -6,6 +6,7 @@ import ShowHotel from "../../components/Select/ShowHotel";
 import Selection from "../../components/Select/Selection";
 import CityLife from "../../components/CityLifeTransportation/CityLife";
 import Icon from "../../UI/Icon/Icon";
+import axios from "axios";
 
 import weatherData from "../../weaterData";
 const data = ["asdasdl", "kakakka", "kakakka"];
@@ -13,10 +14,26 @@ const data = ["asdasdl", "kakakka", "kakakka"];
 export default class CityInfo extends Component {
   state = {
     selectedCity: "",
+    cityList: [],
     accomodation: [],
     weatherData,
     rewOption: ""
   };
+
+  componentDidMount() {
+    let token = localStorage.getItem("token");
+    axios({
+      method: "get",
+      url: "https://js1plus1-api.herokuapp.com/cities",
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }).then(res => {
+      let cities = res.data;
+      let citiNames = cities.map(item => item.name);
+      this.setState({ cityList: citiNames });
+    });
+  }
 
   setSelectedCity = value => {
     this.setState({ selectedCity: value }, this.getAccomodations());
@@ -31,7 +48,7 @@ export default class CityInfo extends Component {
   };
 
   render() {
-    const { cityName, cityList, setId, data } = this.props;
+    const { cityName, setId, data } = this.props;
     return (
       <div className="cityDiv">
         <div className="cityHeader">
@@ -42,7 +59,7 @@ export default class CityInfo extends Component {
             </div>
             <div className="flex">
               <Selection
-                options={cityList}
+                options={this.state.cityList}
                 setOption={this.setSelectedCity}
                 classes={"selectCity"}
               />
