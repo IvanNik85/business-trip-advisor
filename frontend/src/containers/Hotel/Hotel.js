@@ -1,49 +1,39 @@
-import React from "react";
+import React, {Component} from "react";
 import "./Hotel.scss";
 import Feedback from "../../components/Feedback/Feedback";
 import Selection from "../../components/Select/Selection";
-import Button from '../../UI/Button/Button'
-import Weather from "../../components/Weather/Weather"
+import Weather from "../../components/Weather/Weather";
+import Button from "../../UI/Button/Button";
 import Map from "../../UI/MapLocation/Map"
-import weatherData from "../../weaterData"
 
-export default function Hotel(props) {
- const { summary, icon, temperature, data} = props;
-  // data info
-  return (
-    <div className="hotelDiv">
-      <div className="hotelHeader">
-        <h1>I'd like to get some info on the city</h1>
-      </div>
-
-      <div className="hotelInfo">
-        {/* <div className="hInfoLeft">
-          <div className="imgFlex">
-            <img src={data.img} alt={data.title} width="300" />
-          </div>
-          <div className="contentFlex">
-            <h1>{data.title}</h1>
-            <h6>{data.subtitle}</h6>
-            <p>{data.text}</p>
-          </div>
-        </div> */}
-        
-        <div className="hInfoLeft">
-          <div className="imgFlex">
-            <img src='../../hotel.jpg' alt='hotel' width="300" />
-          </div>
-          <div className="contentFlex">
-            <h1>{data[0].title}</h1>
-            {/* <h6>{data.subtitle}</h6> */}
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia nisi animi maiores dolorem quos enim! Incidunt, doloremque! Mollitia, architecto nam facilis itaque eius voluptatem, asperiores quasi delectus necessitatibus tenetur assumenda?</p>
+export default class Hotel extends Component {
+  state = {
+    option: ""
+  };
+  setOption = val => {
+    this.setState({ option: val });
+  };
+  render() {
+    // const {data} = 
+    return (
+      <div className="hotelDiv">
+        <div className="hotelHeader">
+          <h1>Hotel header</h1>
+        </div>
+        <div className="hotelInfo">
+          <div className="hInfoLeft">
+            <div className="imgFlex">
+              <img src='../../hotel.jpg' alt='hotel' width="300" />
+            </div>
+            <div className="contentFlex">
+              {/* <h1>{data[0].title}</h1> */}
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia nisi animi maiores dolorem quos enim! Incidunt, doloremque! Mollitia, architecto nam facilis itaque eius voluptatem, asperiores quasi delectus necessitatibus tenetur assumenda?</p>
           </div>
         </div>
-
         <div className="hInfoRight">
-          <Weather summary={weatherData.currently.summary}
-            icon={weatherData.currently.icon}
-            temperature={weatherData.currently.temperature}/> <br 
-          />
+          <div id="weather">
+              <Weather />
+          </div>
           <Map />
         </div>
       </div>
@@ -64,4 +54,5 @@ export default function Hotel(props) {
       </div>
     </div>
   );
+}
 }

@@ -1,38 +1,60 @@
 import "./CityInfo.scss";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import * as actionTypes from "../../store/actions/actions";
+import { setSelectedCity } from "../../store/actions/actions";
+import { setCities } from "../../store/actions/actions";
+import axios from "axios";
 import Feedback from "../../components/Feedback/Feedback";
 import ShowHotel from "../../components/Select/ShowHotel";
 import Selection from "../../components/Select/Selection";
 import CityLifeTransportation from "../../components/CityLifeTransportation/CityLifeTransportation";
-// import Icon from "../../UI/Icon/Icon";
-import Button from '../../UI/Button/Button'
-import Weather from "../../components/Weather/Weather";
-import weatherData from "../../weaterData";
+import Button from "../../UI/Button/Button";
+
 const data = ["asdasdl", "kakakka", "kakakka"];
 
-export default class CityInfo extends Component {
+class CityInfo extends Component {
   state = {
-    selectedCity: "",
+    cityList: [],
     accomodation: [],
-    weatherData,
+
     rewOption: ""
   };
 
-  setSelectedCity = value => {
-    this.setState({ selectedCity: value }, this.getAccomodations());
-  };
+  componentDidMount() {
+    let token = localStorage.getItem("token");
+    axios({
+      method: "get",
+      url: "https://js1plus1-api.herokuapp.com/cities",
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }).then(res => {
+      let cities = res.data;
+      this.props.setCities(cities);
+      let cityListNames = cities.map(item => item.name);
+      this.setState({ cityList: cityListNames });
+    });
+    axios({
+      method: "get",
+      url: "https://js1plus1-api.herokuapp.com/accommodations",
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }).then(res => {
+      let accomodation = res.data;
 
-  getAccomodations = () => {
-    //poziv da spusti sa baze 4 top rated akomodations za grad koji je stejt!
-    this.setState({ accomodation: data });
-  };
+      this.setState({ accomodation: accomodation });
+    });
+  }
+
   setRewOption = val => {
     this.setState({ rewOption: val });
   };
 
   render() {
-    const { cityName, cityList, setId, data } = this.props;
+    const { cityName, setSelectedCity, setId, data } = this.props;
     return (
       <div className="cityDiv">
         <div className="cityHeader">
@@ -40,8 +62,8 @@ export default class CityInfo extends Component {
             <div className="flex">
               <h3>I'd like to get info on the city: </h3>    
               <Selection
-                options={cityList}
-                setOption={this.setSelectedCity}
+                options={this.state.cityList}
+                setOption={setSelectedCity}
                 classes={"selectCity"}
               />  
             </div>    
@@ -95,10 +117,30 @@ export default class CityInfo extends Component {
                 />
             </div>
           </div>
-
           <Feedback />
         </div>
       </div>
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    cityName: state.selectedCity,
+    modalShow: state.modalShow,
+    allCities: state.cities
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    setSelectedCity: city => dispatch(setSelectedCity(city)),
+    modalOpen: () => dispatch({ type: actionTypes.MODAL_OPEN }),
+    modalClose: () => dispatch({ type: actionTypes.MODAL_CLOSE }),
+    setCities: cities => dispatch(setCities(cities))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CityInfo);

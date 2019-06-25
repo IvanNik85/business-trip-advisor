@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import LogOut from "../LogOut/LogOut";
 import './Nav.scss'
-import AdminPanel from "../../containers/AdminPanel/AdminPanel";
 
 export default function Nav(props) {
-  const { user = "Pera", logout, admin } = props;
+  const { user, admin } = props;
   let adminPanel = null;
   if(admin) {
     adminPanel = <Link to="/admin">Admin Panel</Link>
@@ -22,8 +22,11 @@ export default function Nav(props) {
         <Link to="/city-info">City info </Link>
         <Link to="/accomodation">Accomodation </Link>
         {adminPanel}
-        <h3>Welcome, {user} </h3> <span>{logout}</span>
-      </div>      
+        <LogOut clicked={props.clicked} />
+      </div>
+      <div>
+        <h3>Welcome, {user} </h3>
+      </div>
     </div>
   );
 }

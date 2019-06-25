@@ -9,10 +9,12 @@ import ChosenCity from "./containers/ChosenCity/ChosenCity";
 import Nav from "./components/Nav/Nav";
 import Accomodation from "./containers/Accomodation/Accomodation";
 import Home from "./containers/Home/Home";
+import AdminPanel from "./containers/AdminPanel/AdminPanel";
+import { connect } from "react-redux";
+import * as actionTypes from "./store/actions/actions";
+import { logedOut } from "./store/actions/actions";
 import axios from "axios";
-import AdminPanel from './containers/AdminPanel/AdminPanel'
-
-axios.defaults.withCredentials = true;
+// import AdminPanel from './containers/AdminPanel/AdminPanel'
 
 class App extends Component {
   state = {
@@ -43,7 +45,7 @@ class App extends Component {
           text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia nisi animi maiores dolorem quos enim! Incidunt, doloremque! Mollitia, architecto nam facilis itaque eius voluptatem, asperiores quasi delectus necessitatibus tenetur assumenda?",
           img: faker.fake("{{image.image}}"),
           score: 4
-        } 
+        }
     ]
     },
     cityList: ["Belgrade", "Paris", "London", "Surdulica", "Paramaribo"]
@@ -52,13 +54,35 @@ class App extends Component {
   setHotelID = value => {
     this.setState({ hotelId: value });
   };
+  logingOut = () => {
+    let token = localStorage.getItem("token");
+    console.log(token);
+    axios({
+      method: "post",
+      url: "https://js1plus1-api.herokuapp.com/users/logout",
+      data: token
+    }).then(res => {
+      console.log(res);
+      this.props.logOut();
+    });
+  };
   render() {
+    let nav = null;
+    if (this.props.isLogedIn) {
+      nav = (
+        <Nav
+          admin={this.props.isAdmin}
+          clicked={this.logingOut}
+          user={this.props.userName}
+        />
+      );
+    }
     console.log(this.state.hotelId);
     return (
       <div className="App">       
         <Layout>
           <Router>
-            <Nav admin={this.state.admin}/>
+            {nav}
             <Switch>
               <Route exact path="/" component={Login} />
               <Route exact path="/home" component={Home} />
@@ -92,5 +116,20 @@ class App extends Component {
     );
   }
 }
+const mapStateToProps = state => {
+  return {
+    isLogedIn: state.isLogedIn,
+    isAdmin: state.isAdmin,
+    userName: state.userName
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    logOut: () => dispatch(logedOut())
+  };
+};
 
-export default App;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

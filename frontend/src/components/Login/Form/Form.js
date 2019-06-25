@@ -39,7 +39,12 @@ const Form = props => {
           />
         ) : null}
 
-        <Button>{buttontext}</Button>
+        <Button
+          type={"submit"}
+          clicked={e => props.clicked(email, password, e)}
+        >
+          {buttontext}
+        </Button>
       </form>
     </div>
   );
