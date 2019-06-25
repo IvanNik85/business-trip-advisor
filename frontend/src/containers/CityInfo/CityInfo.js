@@ -12,44 +12,33 @@ import ShowHotel from "../../components/Select/ShowHotel";
 import Selection from "../../components/Select/Selection";
 import CityLifeTransportation from "../../components/CityLifeTransportation/CityLifeTransportation";
 import Button from "../../UI/Button/Button";
+import SelectCity from "../CityInfo/SelectCity/SelectCity";
+import { getAllaccommodations } from "../../store/actions/actions";
+import store from "../../index";
 
-const data = ["asdasdl", "kakakka", "kakakka"];
+//const data = ["asdasdl", "kakakka", "kakakka"];
 
 class CityInfo extends Component {
   state = {
-    cityList: [],
-    accomodation: [],
+    filteredAcc: [],
 
     rewOption: ""
   };
 
   componentDidMount() {
-    let token = localStorage.getItem("token");
-    axios({
-      method: "get",
-      url: "https://js1plus1-api.herokuapp.com/cities",
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    }).then(res => {
-      let cities = res.data;
-      this.props.setCities(cities);
-      let cityListNames = cities.map(item => item.name);
-      this.setState({ cityList: cityListNames });
-    });
-    axios({
-      method: "get",
-      url: "https://js1plus1-api.herokuapp.com/accommodations",
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    }).then(res => {
-      let accomodation = res.data;
-
-      this.setState({ accomodation: accomodation });
-    });
+    store.dispatch(getAllaccommodations());
   }
+  setFilteredAcc = (val, id) => {
+    this.props.setSelectedCity(val);
+    let filteredAcc = [...this.props.allAccommodations];
+    let acc = filteredAcc.filter(item => {
+      //console.log(item.city, "hotelov grad");
+      // console.log(id + "  id selektovanog grada");
+      return item.city == id;
+    });
 
+    this.setState({ filteredAcc: acc });
+  };
   setRewOption = val => {
     this.setState({ rewOption: val });
   };
@@ -65,10 +54,15 @@ class CityInfo extends Component {
               <h1>{cityName}</h1>
             </div>
             <div className="flex">
-              <Selection
+              {/*<Selection
                 options={this.state.cityList}
                 setOption={setSelectedCity}
                 classes={"selectCity"}
+              />*/}
+              <SelectCity
+                classes={"selectCity"}
+                cityList={this.props.allCities}
+                selection={this.setFilteredAcc}
               />
             </div>
           </div>
@@ -84,7 +78,7 @@ class CityInfo extends Component {
           iconDiv="accomodationStyle"
           setId={setId}
           id={9}
-          data={data}
+          data={this.state.filteredAcc}
         />
         <CityLifeTransportation
           title="Transportation"
@@ -102,12 +96,6 @@ class CityInfo extends Component {
               <h2>Reviews</h2>
             </div>
             <div className="flex1">
-              {/* <Icon
-                iconClass={"plus-circle"}
-                color={"addComentIcon"}
-                fontSize={60}
-                clicked={() => console.log("radi ikon klik")}
-              />              */}
               <Button
                 classes={"addComment"}
                 clicked={() => console.log("radi ikon klik")}
@@ -133,7 +121,8 @@ const mapStateToProps = state => {
   return {
     cityName: state.selectedCity,
     modalShow: state.modalShow,
-    allCities: state.cities
+    allCities: state.cities,
+    allAccommodations: state.accommodations
   };
 };
 const mapDispatchToProps = dispatch => {
@@ -141,7 +130,7 @@ const mapDispatchToProps = dispatch => {
     setSelectedCity: city => dispatch(setSelectedCity(city)),
     modalOpen: () => dispatch({ type: actionTypes.MODAL_OPEN }),
     modalClose: () => dispatch({ type: actionTypes.MODAL_CLOSE }),
-    setCities: cities => dispatch(setCities(cities))
+    getCities: cities => dispatch(setCities(cities))
   };
 };
 
