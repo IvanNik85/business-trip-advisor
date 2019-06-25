@@ -14,6 +14,7 @@ import { connect } from "react-redux";
 import * as actionTypes from "./store/actions/actions";
 import { logedOut } from "./store/actions/actions";
 import axios from "axios";
+import { withRouter } from "react-router-dom";
 
 class App extends Component {
   state = {
@@ -58,16 +59,20 @@ class App extends Component {
   };
   logingOut = () => {
     let token = localStorage.getItem("token");
-    console.log(token);
+
     axios({
       method: "post",
       url: "https://js1plus1-api.herokuapp.com/users/logout",
-      data: token
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
     }).then(res => {
       console.log(res);
       this.props.logOut();
+      this.props.history.push("/");
     });
   };
+
   render() {
     let nav = null;
     if (this.props.isLogedIn) {
@@ -134,4 +139,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(App);
+)(withRouter(App));

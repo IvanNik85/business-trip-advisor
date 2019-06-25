@@ -18,8 +18,8 @@ const data = ["asdasdl", "kakakka", "kakakka"];
 class CityInfo extends Component {
   state = {
     cityList: [],
-    accomodation: [],
-
+    accommodations: [],
+    filteredAcc: [],
     rewOption: ""
   };
 
@@ -44,15 +44,20 @@ class CityInfo extends Component {
         Authorization: `Bearer ${token}`
       }
     }).then(res => {
-      let accomodation = res.data;
+      let accommodations = res.data;
 
-      this.setState({ accomodation: accomodation });
+      this.setState({ accommodations: accommodations });
     });
   }
 
   setRewOption = val => {
     this.setState({ rewOption: val });
   };
+  componentWillUpdate(prevProps) {
+    if (prevProps.cityName !== this.props.cityName) {
+      this.filterNsort(this.props.cityName);
+    }
+  }
 
   render() {
     const { cityName, setSelectedCity, setId, data } = this.props;
@@ -67,7 +72,7 @@ class CityInfo extends Component {
             <div className="flex">
               <Selection
                 options={this.state.cityList}
-                setOption={setSelectedCity}
+                setOption={this.props.setSelectedCity}
                 classes={"selectCity"}
               />
             </div>
@@ -84,7 +89,7 @@ class CityInfo extends Component {
           iconDiv="accomodationStyle"
           setId={setId}
           id={9}
-          data={data}
+          data={this.state.filteredAcc}
         />
         <CityLifeTransportation
           title="Transportation"
@@ -102,12 +107,6 @@ class CityInfo extends Component {
               <h2>Reviews</h2>
             </div>
             <div className="flex1">
-              {/* <Icon
-                iconClass={"plus-circle"}
-                color={"addComentIcon"}
-                fontSize={60}
-                clicked={() => console.log("radi ikon klik")}
-              />              */}
               <Button
                 classes={"addComment"}
                 clicked={() => console.log("radi ikon klik")}
