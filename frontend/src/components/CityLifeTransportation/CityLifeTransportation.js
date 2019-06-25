@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import "./CityLife.scss";
+import "./CityLifeTransportation.scss";
 import Icon from "../../UI/Icon/Icon";
 import IconAndText from "../../UI/IconAndText/IconAndText";
 import ShowHotel from "../Select/ShowHotel";
 import AccomodationFiles from "./AccomodationFiles";
 
-class CityLife extends Component {
+class CityLifeTransportation extends Component {
   state = {
     id: "hidden",
-    transform: true
+    transform: true,    
   };
 
   handleClick = () => {
@@ -93,4 +93,4 @@ class CityLife extends Component {
   }
 }
 
-export default CityLife;
+export default CityLifeTransportation;

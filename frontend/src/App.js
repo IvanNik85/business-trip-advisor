@@ -71,7 +71,13 @@ class App extends Component {
   render() {
     let nav = null;
     if (this.props.isLogedIn) {
-      nav = <Nav admin={this.state.admin} clicked={this.logingOut} />;
+      nav = (
+        <Nav
+          admin={this.props.isAdmin}
+          clicked={this.logingOut}
+          user={this.props.userName}
+        />
+      );
     }
     console.log(this.state.hotelId);
     return (
@@ -113,7 +119,11 @@ class App extends Component {
   }
 }
 const mapStateToProps = state => {
-  return { isLogedIn: state.isLogedIn };
+  return {
+    isLogedIn: state.isLogedIn,
+    isAdmin: state.isAdmin,
+    userName: state.userName
+  };
 };
 const mapDispatchToProps = dispatch => {
   return {

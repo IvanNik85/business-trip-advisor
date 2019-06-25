@@ -3,12 +3,10 @@ import "./Hotel.scss";
 import Feedback from "../../components/Feedback/Feedback";
 import Selection from "../../components/Select/Selection";
 import Weather from "../../components/Weather/Weather";
-import weatherData from "../../weaterData";
 
 export default class Hotel extends Component {
   state = {
-    option: "",
-    weatherData
+    option: ""
   };
   setOption = val => {
     this.setState({ option: val });
@@ -37,11 +35,7 @@ export default class Hotel extends Component {
           </div>
           <div className="hInfoRight">
             <div id="weather">
-              <Weather
-                summary={this.state.weatherData.currently.summary}
-                icon={this.state.weatherData.currently.icon}
-                temperature={this.state.weatherData.currently.temperature}
-              />
+              <Weather />
             </div>
             {"Hotel Map komponenta"}
           </div>

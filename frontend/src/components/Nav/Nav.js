@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import LogOut from "../LogOut/LogOut";
 
 export default function Nav(props) {
-  const { user = "Pera", admin } = props;
+  const { user, admin } = props;
   let adminPanel = null;
   if (admin) {
     adminPanel = <Link to="/admin">Admin Panel </Link>;

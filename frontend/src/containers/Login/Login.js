@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import * as actionTypes from "../../store/actions/actions";
 import { logedIn } from "../../store/actions/actions";
 import axios from "axios";
+import { setUserName } from "../../store/actions/actions";
+import { isAdmin } from "../../store/actions/actions";
 
 import Overlay from "../../components/Login/Overlay/Overlay";
 import OverlayPanel from "../../components/Login/Overlay/OverlayPanel";
@@ -25,8 +27,9 @@ class Login extends Component {
     }
   }
 
-  logingIn = (email, password) => {
-    console.log(email, password);
+  logingIn = (email, password, e) => {
+    e.preventDefault();
+
     axios({
       method: "post",
       url: "https://js1plus1-api.herokuapp.com/users/login",
@@ -38,7 +41,12 @@ class Login extends Component {
       let token = res.data.token;
       localStorage.setItem("token", token);
 
+      this.props.setUser(res.data.user.name);
       this.props.logIn();
+
+      if (res.data.user.isAdmin) {
+        this.props.setAdmin();
+      }
     });
   };
 
@@ -94,7 +102,9 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    logIn: () => dispatch(logedIn())
+    logIn: () => dispatch(logedIn()),
+    setUser: userName => dispatch(setUserName(userName)),
+    setAdmin: () => dispatch(isAdmin())
   };
 };
 

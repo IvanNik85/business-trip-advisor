@@ -4,6 +4,8 @@ const initialState = {
   isLogedIn: false,
   isAdmin: false,
   selectedCity: "",
+  userName: "",
+  cities: [],
   modalShow: false
 };
 const reducer = (state = initialState, action) => {
@@ -37,6 +39,16 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         modalShow: false
+      };
+    case actionTypes.SET_USER_NAME:
+      return {
+        ...state,
+        userName: action.userName
+      };
+    case actionTypes.SET_CITIES:
+      return {
+        ...state,
+        cities: state.cities.concat(action.cities)
       };
 
     default:

@@ -4,22 +4,22 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actionTypes from "../../store/actions/actions";
 import { setSelectedCity } from "../../store/actions/actions";
+import { setCities } from "../../store/actions/actions";
 import axios from "axios";
 
 import Feedback from "../../components/Feedback/Feedback";
 import ShowHotel from "../../components/Select/ShowHotel";
 import Selection from "../../components/Select/Selection";
-import CityLife from "../../components/CityLifeTransportation/CityLife";
-import Icon from "../../UI/Icon/Icon";
+import CityLifeTransportation from "../../components/CityLifeTransportation/CityLifeTransportation";
+import Button from "../../UI/Button/Button";
 
-import weatherData from "../../weaterData";
 const data = ["asdasdl", "kakakka", "kakakka"];
 
 class CityInfo extends Component {
   state = {
     cityList: [],
     accomodation: [],
-    weatherData,
+
     rewOption: ""
   };
 
@@ -33,19 +33,23 @@ class CityInfo extends Component {
       }
     }).then(res => {
       let cities = res.data;
+      this.props.setCities(cities);
       let cityListNames = cities.map(item => item.name);
       this.setState({ cityList: cityListNames });
     });
+    axios({
+      method: "get",
+      url: "https://js1plus1-api.herokuapp.com/accommodations",
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }).then(res => {
+      let accomodation = res.data;
+
+      this.setState({ accomodation: accomodation });
+    });
   }
 
-  setSelectedCity = value => {
-    this.setState({ selectedCity: value }, this.getAccomodations());
-  };
-
-  getAccomodations = () => {
-    //poziv da spusti sa baze 4 top rated akomodations za grad koji je stejt!
-    this.setState({ accomodation: data });
-  };
   setRewOption = val => {
     this.setState({ rewOption: val });
   };
@@ -74,7 +78,7 @@ class CityInfo extends Component {
             <a href="#cityLife">CITYLIFE</a>
           </div>
         </div>
-        <CityLife
+        <CityLifeTransportation
           title="Accomodation"
           contDiv="accomodation"
           iconDiv="accomodationStyle"
@@ -82,12 +86,12 @@ class CityInfo extends Component {
           id={9}
           data={data}
         />
-        <CityLife
+        <CityLifeTransportation
           title="Transportation"
           contDiv="transportation"
           iconDiv="transportStyle"
         />
-        <CityLife
+        <CityLifeTransportation
           title="City Life"
           contDiv="cityLife"
           iconDiv="cityLifestyle"
@@ -96,22 +100,28 @@ class CityInfo extends Component {
           <div className="reviewsHeder">
             <div className="flex">
               <h2>Reviews</h2>
+            </div>
+            <div className="flex1">
+              {/* <Icon
+                iconClass={"plus-circle"}
+                color={"addComentIcon"}
+                fontSize={60}
+                clicked={() => console.log("radi ikon klik")}
+              />              */}
+              <Button
+                classes={"addComment"}
+                clicked={() => console.log("radi ikon klik")}
+              >
+                +
+              </Button>
+              <h3>SORT</h3>
               <Selection
-                options={["latest", "date", "score"]}
+                options={["LATEST", "DATE", "SCORE"]}
                 setOption={this.setRewOption}
                 classes="rewSelect"
               />
             </div>
-            <div className="flex">
-              <Icon
-                iconClass={"comment-medical"}
-                color={"addComentIcon"}
-                fontSize={60}
-                clicked={() => console.log("radi ikon klik")}
-              />
-            </div>
           </div>
-
           <Feedback />
         </div>
       </div>
@@ -122,14 +132,16 @@ class CityInfo extends Component {
 const mapStateToProps = state => {
   return {
     cityName: state.selectedCity,
-    modalShow: state.modalShow
+    modalShow: state.modalShow,
+    allCities: state.cities
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
     setSelectedCity: city => dispatch(setSelectedCity(city)),
     modalOpen: () => dispatch({ type: actionTypes.MODAL_OPEN }),
-    modalClose: () => dispatch({ type: actionTypes.MODAL_CLOSE })
+    modalClose: () => dispatch({ type: actionTypes.MODAL_CLOSE }),
+    setCities: cities => dispatch(setCities(cities))
   };
 };
 

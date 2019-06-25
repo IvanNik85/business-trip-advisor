@@ -22,7 +22,12 @@
             
             i {
                 padding-left: 5px;
-            }
+            }            
+        }
+        #linkAccomodation:hover i {
+           position: relative;
+           left: 5px;
+           transition: 0.4s;
         }
     }
     .cityInformation {
@@ -73,7 +78,7 @@
                     width: 95%;  
                     margin: 10px; 
                 }
-            }
+            }           
         }
     }
 }
