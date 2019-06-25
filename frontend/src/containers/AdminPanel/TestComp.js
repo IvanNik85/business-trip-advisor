@@ -14,9 +14,9 @@ export default class TestComp extends Component {
     });
   };
   render() {
-    const { name, displayDiv, content } = this.props;
+    const { name, displayDiv, content,classes } = this.props;
     return (
-      <div>
+      <div className={classes}>
         <div onClick={this.handleClick}>
         <h2 >{name}</h2>
         <span>

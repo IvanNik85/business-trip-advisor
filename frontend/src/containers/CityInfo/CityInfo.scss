@@ -47,7 +47,7 @@
 			justify-content: space-evenly;
 			align-items: center;			
 			flex: 1;
-
+			
 			a {
 				text-decoration: none;
 				font-weight: 700;
@@ -125,6 +125,11 @@
 	align-items: center;
 	flex: 1;
 	padding: 40px;  
+
+	h3 {
+		padding-right: 10px;
+		font-weight: normal;
+	}
 }
 .flex1 {
 	flex: 1;
@@ -151,4 +156,9 @@
 	bottom: 0;
 	right: 0;	
 	z-index: -1;
+}
+@media(max-width: 1250px) {
+	select {
+		padding-top: 10px;
+	}
 }

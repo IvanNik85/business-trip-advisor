@@ -28,8 +28,9 @@ export default class AdminPanel extends Component {
     return (
       <div className="adminContainer">
         <TestComp
+          classes='accomodation'
           name="Add New Accomodation"
-          displayDiv="accomodationStyle"
+          displayDiv="accomodationStyleModal"
           content="content from component accomodation"
         >
           {/* {'cela komponenta ovde'} */}
@@ -37,16 +38,18 @@ export default class AdminPanel extends Component {
         </TestComp>
 
         <TestComp 
+        classes='transportation'
           name="Add New Transportation"
-          displayDiv="accomodationStyle"
+          displayDiv="accomodationStyleModal"
           content="content from componentranspotation"
         >
           <ModalAddNewTranspotation setOption={this.setSelectedCategory} />
         </TestComp>
 
         <TestComp
+        classes='cityLife'
           name="Feedbacks"
-          displayDiv="accomodationStyle"
+          displayDiv="accomodationStyleModal"
           content="content from componentfeedback"
         >
           {

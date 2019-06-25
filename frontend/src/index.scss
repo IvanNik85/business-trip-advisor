@@ -15,14 +15,15 @@ code {
 html {
 	scroll-behavior: smooth;
 }
-	$darkBlue:#064d61;
-	$blue:#0e6b85;
-	$lightBlue:#2ca9bf;
+	$darkBlue:#101e3e;
+	$blue:#055174;
+	$lightBlue:#157dad;
 	$brown:#640a09;
 	$pink:#f74077;
 	$orange:#e35f39;
 	$yellow:#fab823;
 	$pinkLight:#fa6e98;
+	
 
 @mixin coment($top) {
 	position: absolute;

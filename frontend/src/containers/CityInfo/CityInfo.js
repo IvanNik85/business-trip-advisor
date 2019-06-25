@@ -38,7 +38,7 @@ export default class CityInfo extends Component {
         <div className="cityHeader">
           <div className="cHeaderLeft">
             <div className="flex">
-              <h3>Hocu da nadjem info za grad: </h3>    
+              <h3>I'd like to get info on the city: </h3>    
               <Selection
                 options={cityList}
                 setOption={this.setSelectedCity}
