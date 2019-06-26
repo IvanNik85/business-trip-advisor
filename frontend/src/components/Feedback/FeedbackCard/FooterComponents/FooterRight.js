@@ -14,7 +14,8 @@ import Button from '../../../../UI/Button/Button'
 
 class FooterRight extends React.Component {
     state = {
-        modalShow: false
+        modalShow: false,
+        newModal: false,      
     }
     modalOpenHandler = () => {
         this.setState({ modalShow: true });
@@ -22,6 +23,9 @@ class FooterRight extends React.Component {
     modalClosedHandler = () => {
         this.setState({ modalShow: false });
     };
+    modalOpenNew = () => {
+        this.setState({ newModal: true });
+      };
     render() {
         const { img, name, date, commentTitle, comment, filter, moreComments } = this.props.data
         let additionalComments = moreComments.map(item => (
@@ -34,7 +38,7 @@ class FooterRight extends React.Component {
                 <a href="##" id="readMore" onClick={this.modalOpenHandler}>
                     READ MORE
                 </a>
-                <Backdrop
+                <Modal
                     style={{ "z-index": 50 }}
                     show={this.state.modalShow}
                     clicked={this.modalClosedHandler}
@@ -61,12 +65,22 @@ class FooterRight extends React.Component {
                         </FeedbackMain> */}
                         {additionalComments}
                         <Button classes={'addComment'} 
-                            clicked={() => console.log("radi ikon klik")}>                  
+                            clicked={this.modalOpenNew}>                  
                             +
-                        </Button> 
+                        </Button>                        
                     </ModalTextArea>  
-                </Backdrop>
-                
+                </Modal>
+                <Modal
+                    style={{ "z-index": this.props.index }}
+                    show={this.state.newModal}
+                    clicked={this.modalClosedHandler}
+                >
+                    <ModalHeader
+                    clicked={this.modalClosedHandler}
+                    closeSpanClicked={this.modalClosedHandler}
+                    title={"City life feedback"}
+                />
+                </Modal>
             </div>
         )
     }
