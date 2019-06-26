@@ -6,6 +6,7 @@ const initialState = {
   selectedCity: "",
   userName: "",
   cities: [],
+  accommodations: [],
   modalShow: false
 };
 const reducer = (state = initialState, action) => {
@@ -49,6 +50,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         cities: state.cities.concat(action.cities)
+      };
+    case actionTypes.SET_ACCOMMODATIONS:
+      return {
+        ...state,
+        accommodations: state.accommodations.concat(action.accommodations)
       };
 
     default:

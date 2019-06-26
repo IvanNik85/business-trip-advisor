@@ -8,11 +8,13 @@ import { Provider } from "react-redux";
 import { createStore, applyMiddleware, compose } from "redux";
 import reducer from "./store/reducer";
 import thunk from "redux-thunk";
+import { getAllCities } from "./store/actions/actions";
 
 //for redux dev tools
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
 const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
+store.dispatch(getAllCities());
+export default store;
 
 const app = (
   <Provider store={store}>

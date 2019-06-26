@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export const LOGED_IN = "LOGED_IN";
 export const LOGED_OUT = "LOGED_OUT";
 export const IS_ADMIN = "IS_ADMIN";
@@ -6,7 +8,7 @@ export const MODAL_OPEN = "MODAL_OPEN";
 export const MODAL_CLOSE = "MODAL_CLOSE";
 export const SET_USER_NAME = "SET_USER_NAME";
 export const SET_CITIES = "SET_CITIES";
-
+export const SET_ACCOMMODATIONS = "SET_ACCOMMODATIONS";
 //action creators
 
 export const logedIn = () => {
@@ -42,5 +44,44 @@ export const setCities = cities => {
   return {
     type: SET_CITIES,
     cities: cities
+  };
+};
+
+export const setAccommodations = accommodations => {
+  return {
+    type: SET_ACCOMMODATIONS,
+    accommodations: accommodations
+  };
+};
+
+//auth token
+const token = localStorage.getItem("token");
+
+// asinc action creators
+export const getAllCities = () => {
+  return async dispatch => {
+    const res = await axios({
+      method: "get",
+      url: "https://js1plus1-api.herokuapp.com/cities",
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    dispatch(setCities(res.data));
+  };
+};
+
+export const getAllaccommodations = () => {
+  return async dispatch => {
+    const res = await axios({
+      method: "get",
+      url: "https://js1plus1-api.herokuapp.com/accommodations",
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    dispatch(setAccommodations(res.data));
   };
 };
