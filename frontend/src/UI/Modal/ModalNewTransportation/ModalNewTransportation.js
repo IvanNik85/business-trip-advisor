@@ -8,7 +8,8 @@ import InputField from '../../../components/Login/Form/Input';
 const ModalNewTransportation = (props) => {
 
     return (
-        <div>
+        <div className='modalNewAccomodation'>
+             <div  className="formAndImg">
              <form >
                     <label htmlFor='hotelURL'>City from</label>
                         <InputField
@@ -22,7 +23,7 @@ const ModalNewTransportation = (props) => {
                         name={"hotelURL"}
                         classes={"inputNameFullWidth"}
                     />
-                    <label htmlFor='hotelURL'>Select transportation type</label>
+                    <label htmlFor='hotelURL'>Select transportation type:</label>
                     <Selection 
                           options={["Bus", "Airplane", "Taxi"]}
                             setOption={props.setOption}
@@ -33,17 +34,18 @@ const ModalNewTransportation = (props) => {
                                 type={"text"}
                                 name={"city"}
                                 // placeholder={"city"}
-                                classes={"inputName"}
+                                classes={"inputNameFullWidth"}
                             />
                             <label htmlFor='country'>Country</label>
                             <InputField
                                 type={"text"}
                                 name={"country"}
                                 // placeholder={"country"}
-                                classes={"inputName"}
+                                classes={"inputNameFullWidth"}
                             />
-                    <Button />
+                    <Button classes='button'><span>SAVE </span></Button>
                  </form>
+        </div>
         </div>
     )
 }

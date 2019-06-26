@@ -1,51 +1,25 @@
+@import '../../index.scss';
+
 .adminContainer {
-  height: 960px;
+ // height:100%;
+  //min-height: 650px;
+  color: white;
+  padding-top: 14em;
 
-  background: linear-gradient(
-    236deg,
-    #206db7,
-    #4e25ce,
-    #9925ce,
-    #ce257d,
-    #25ce7d
-  );
-  background-size: 1000% 1000%;
-
-  -webkit-animation: AnimationName 13s ease infinite;
-  -moz-animation: AnimationName 13s ease infinite;
-  animation: AnimationName 13s ease infinite;
-
-  @-webkit-keyframes AnimationName {
-    0% {
-      background-position: 0% 2%;
-    }
-    50% {
-      background-position: 100% 99%;
-    }
-    100% {
-      background-position: 0% 2%;
-    }
+  h2{
+    font-weight: 100;
+    padding: 2em;
   }
-  @-moz-keyframes AnimationName {
-    0% {
-      background-position: 0% 2%;
-    }
-    50% {
-      background-position: 100% 99%;
-    }
-    100% {
-      background-position: 0% 2%;
-    }
-  }
-  @keyframes AnimationName {
-    0% {
-      background-position: 0% 2%;
-    }
-    50% {
-      background-position: 100% 99%;
-    }
-    100% {
-      background-position: 0% 2%;
-    }
-  }
+}
+.adminContainer::after {
+  content: "";
+	background:#101e3e url('../../images/panorama.jpg') no-repeat center;	
+	background-size: cover;
+	position: fixed;
+	opacity: 0.4;
+	top: 0; 
+	left: 0;
+	bottom: 0;
+	right: 0;	
+	z-index: -1;
 }

@@ -27,19 +27,22 @@ import Selection from "../../../components/Select/Selection";
                         placeholder={"name, city, country"}
                         classes={"inputNameFullWidth"}
                     />
-
+                    <div className='starHotel'>
                     <Selection 
                           options={["Hotel", "Hostel", "Apartments"]}
                             setOption={props.setOption}
                             classes={"modalSelect"}
                     />
+                    <div>
                     <i className="fas fa-star"></i>
-                    
+                  
                     <Selection 
                           options={["", "1", "2" ,"3" ,"4" ,"5"]}
                             setOption={props.setOption}
                             classes={"modalSelect"}
                     />
+                    </div>
+                    </div>
                     <div className='twoItems'>
                         <div className='imageContainer'>
                             <label htmlFor={"imageUpload"}>
@@ -55,7 +58,9 @@ import Selection from "../../../components/Select/Selection";
                                 style={{ display: "none" }}
                             />
                         </div>
-                        <TextArea />
+                        <TextArea
+                        placeholder={'hotel description:'}
+                        />
                     </div>
                     <div className='twoItems'>
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.9541676458994!2d20.40913961500631!3d44.80212267909863!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a6f92363f1881%3A0x550c0955fccddcc2!2sSavski+nasip+7%2C+Beograd+11070!5e0!3m2!1sen!2srs!4v1561017703799!5m2!1sen!2srs"   frameBorder="0" style={{width:'40%',height:'100%',paddingTop:'1em'}} allowFullScreen></iframe>
@@ -83,7 +88,7 @@ import Selection from "../../../components/Select/Selection";
                             />
                         </div>
                     </div>
-                    <Button />
+                    <Button classes='button'><span>SAVE </span></Button>
                  </form>
             </div> 
         </div>

@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import * as actionTypes from "../../store/actions/actions";
 import { setSelectedCity } from "../../store/actions/actions";
 import { setCities } from "../../store/actions/actions";
-
 import Feedback from "../../components/Feedback/Feedback";
 
 import Selection from "../../components/Select/Selection";
@@ -85,7 +84,7 @@ class CityInfo extends Component {
         <div className="cityHeader">
           <div className="cHeaderLeft">
             <div className="flex">
-              <h3>Ocu da nadjem info za grad: </h3>
+              <h3>I'd like to get info on the city: </h3>
               <h1 style={{ height: "15px" }}>{cityName}</h1>
             </div>
             <div className="flex">

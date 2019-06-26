@@ -14,21 +14,24 @@ export default class TestComp extends Component {
     });
   };
   render() {
-    const { name, displayDiv, content } = this.props;
+    const { name, displayDiv, content,classes } = this.props;
     return (
-      <div>
-        <h2 onClick={this.handleClick}>{name}</h2>
+      <div className={classes}>
+        <div onClick={this.handleClick}>
+        <h2 >{name}</h2>
         <span>
           <i
             style={{
               transform: this.state.transform
                 ? "rotate(0deg)"
                 : "rotate(180deg)",
-              transition: "0.4s"
+              transition: "0.4s",
+              fontSize:'.8em'
             }}
             className="fas fa-chevron-down"
           />
         </span>
+        </div>
         <div className={displayDiv} id={this.state.id}>
           {this.props.children}
         </div>

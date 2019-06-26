@@ -1,17 +1,56 @@
 body {
-  margin: 0;
-  // font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-  //   "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-  //   sans-serif;
-  font-family: "Raleway", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	// font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+	//   "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+	//   sans-serif;
+	font-family: "Raleway", sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+		monospace;
 }
 html {
-  scroll-behavior: smooth;
+	scroll-behavior: smooth;
+}
+	$darkBlue:#101e3e;
+	$blue:#055174;
+	$lightBlue:#157dad;
+	$brown:#640a09;
+	$pink:#f74077;
+	$orange:#e35f39;
+	$yellow:#fab823;
+	$pinkLight:#fa6e98;
+	
+
+@mixin coment($top) {
+	position: absolute;
+	width: 55px;
+	height: 55px;
+	border-radius: 50%;
+	color: #fff;
+	// background-color: #8ba245;
+	background-color: #ff8100;
+	font-size: 40px;
+	border: none;
+	box-shadow: 4px 4px 12px rgb(48, 47, 47);
+	top: $top;
+	right: 40px;
+	transform: rotate(-90deg);
+	transition: 0.4s;
+}
+@mixin comentHover {
+	background-color: #ff8100;
+	color: #fff;
+	transform: rotate(90deg);
+	transition: 0.4s;
+	cursor: pointer;
+}
+.addComment {
+	@include coment(-30px)
+}
+.addComment:hover {
+	@include comentHover;
 }

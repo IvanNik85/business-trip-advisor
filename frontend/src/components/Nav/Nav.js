@@ -1,17 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import LogOut from "../LogOut/LogOut";
+import './Nav.scss'
 
 export default function Nav(props) {
   const { user, admin } = props;
   let adminPanel = null;
-  if (admin) {
-    adminPanel = <Link to="/admin">Admin Panel </Link>;
+  if(admin) {
+    adminPanel = <Link to="/admin">Admin Panel</Link>
   }
   return (
-    <div className="navBar">
-      <div>LOGO</div>
-      <div>
+    <div className="navBar">      
+      <div className="logo">
+        <Link to="/home"></Link>
+      </div>
+      <div className="links">
         <Link to="/home">Home</Link>
         <Link to="/">Login</Link>
         <Link to="/chosen-city">Chosen city </Link>

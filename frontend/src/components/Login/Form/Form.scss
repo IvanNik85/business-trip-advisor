@@ -1,3 +1,4 @@
+@import '../../../index.scss';
 .form-container form {
   background-color: #ffffff;
   display: flex;
@@ -22,8 +23,10 @@
 
 .form-container button {
   border-radius: 20px;
-  border: 1px solid #ff4b2b;
-  background-color: #ff4b2b;
+  // border: 1px solid #ff4b2b;
+  // background-color: #ff4b2b;
+  border: 1px solid $darkBlue;
+  background-color: $blue;
   color: #ffffff;
   font-size: 12px;
   font-weight: bold;

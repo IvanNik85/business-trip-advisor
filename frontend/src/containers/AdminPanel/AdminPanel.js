@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./AdminPanel.scss";
 import TestComp from "./TestComp";
-import ModalAddNewAccomodation from "../../UI/Modal/ModalNewAccomodation/ModalNewAccomodation";
+import ModalAddNewAccomodation from "../../UI/Modal/ModalNewAccomodation/ModalNewAccomodation"
 import ModalAddNewTranspotation from "../../UI/Modal/ModalNewTransportation/ModalNewTransportation";
 
 export default class AdminPanel extends Component {
@@ -28,25 +28,28 @@ export default class AdminPanel extends Component {
     return (
       <div className="adminContainer">
         <TestComp
+          classes='accomodation'
           name="Add New Accomodation"
-          displayDiv="accomodationStyle"
+          displayDiv="accomodationStyleModal"
           content="content from component accomodation"
         >
           {/* {'cela komponenta ovde'} */}
           <ModalAddNewAccomodation setOption={this.setSelectedCategory} />
         </TestComp>
 
-        <TestComp
+        <TestComp 
+        classes='transportation'
           name="Add New Transportation"
-          displayDiv="accomodationStyle"
+          displayDiv="accomodationStyleModal"
           content="content from componentranspotation"
         >
           <ModalAddNewTranspotation setOption={this.setSelectedCategory} />
         </TestComp>
 
         <TestComp
+        classes='cityLife'
           name="Feedbacks"
-          displayDiv="accomodationStyle"
+          displayDiv="accomodationStyleModal"
           content="content from componentfeedback"
         >
           {

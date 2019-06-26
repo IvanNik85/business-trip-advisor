@@ -47,7 +47,7 @@ class App extends Component {
           text:
             "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia nisi animi maiores dolorem quos enim! Incidunt, doloremque! Mollitia, architecto nam facilis itaque eius voluptatem, asperiores quasi delectus necessitatibus tenetur assumenda?",
           img: faker.fake("{{image.image}}"),
-          score: 8
+          score: 4
         }
       ]
     },
