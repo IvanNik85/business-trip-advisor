@@ -12,7 +12,7 @@ import weatherData from "../../weaterData"
      }
      render() {
         const {data, id, setId, summary, icon, temperature} = this.props  
-        let hotels = data.map(hotel => <ShowHotel setId={setId} key={hotel.id} data={hotel} /> )
+        let hotels = data.map((hotel, index) => <ShowHotel setId={setId} key={index} data={hotel} /> )
         return (
             <div className="fullWidth">
                 <div id="accomWeather">

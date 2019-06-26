@@ -5,9 +5,13 @@ import { connect } from "react-redux";
 import * as actionTypes from "../../store/actions/actions";
 import { setSelectedCity } from "../../store/actions/actions";
 import { setCities } from "../../store/actions/actions";
-import axios from "axios";
+
 import Feedback from "../../components/Feedback/Feedback";
-import ShowHotel from "../../components/Select/ShowHotel";
+import SelectCity from "../CityInfo/SelectCity/SelectCity";
+import { getAllCities } from "../../store/actions/actions";
+import { getAllaccommodations } from "../../store/actions/actions";
+import { getAllfeedbacks } from "../../store/actions/actions";
+import store from "../../index";
 import Selection from "../../components/Select/Selection";
 import CityLifeTransportation from "../../components/CityLifeTransportation/CityLifeTransportation";
 import Button from "../../UI/Button/Button";
@@ -16,41 +20,22 @@ import ModalHeader from "../../UI/Modal/ModalHeader/ModalHeader"
 import ModalBodyFeedAndPOI from "../../UI/Modal/ModalBodyFeedPoi/ModalBodyFeedPoi"
 import ModalTextArea from "../../UI/Modal/ModalTextArea/ModalTextArea"
 
-const data = ["asdasdl", "kakakka", "kakakka"];
+
 
 class CityInfo extends Component {
   state = {
-    cityList: [],
-    accomodation: [],
-    modalShow: false,
-    rewOption: ""
-  };
+    
+      filteredAcc: [],
+      sortedFeedbacks: [],
+      filteredCategoryFeedbacks: [],
+  
+      rewOption: ""
+  }
 
   componentDidMount() {
-    let token = localStorage.getItem("token");
-    axios({
-      method: "get",
-      url: "https://js1plus1-api.herokuapp.com/cities",
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    }).then(res => {
-      let cities = res.data;
-      this.props.setCities(cities);
-      let cityListNames = cities.map(item => item.name);
-      this.setState({ cityList: cityListNames });
-    });
-    axios({
-      method: "get",
-      url: "https://js1plus1-api.herokuapp.com/accommodations",
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    }).then(res => {
-      let accomodation = res.data;
-
-      this.setState({ accomodation: accomodation });
-    });
+    store.dispatch(getAllCities());
+    store.dispatch(getAllaccommodations());
+    store.dispatch(getAllfeedbacks());
   }
 
   setRewOption = val => {
@@ -64,22 +49,68 @@ class CityInfo extends Component {
   modalClosedHandler = () => {
     this.setState({ modalShow: false });
   };
+  setFilteredAcc = (val, id) => {
+    this.props.setSelectedCity(val);
+    let filteredAcc = [...this.props.allAccommodations];
+    let acc = filteredAcc
+      .filter(item => {
+        return item.city == id;
+      })
+      .sort((a, b) => {
+        return b.rate - a.rate;
+      })
+      .slice(0, 3);
+
+    this.setState({ filteredAcc: acc });
+  };
+  setRewOption = val => {
+    this.setState({ rewOption: val });
+  };
+
+  filterFeedbacks = value => {
+    let feedbacks = [...this.props.feedbacks];
+    let sortedFeedbacks;
+    switch (value) {
+      case "LATEST":
+        sortedFeedbacks = feedbacks.sort((a, b) => {
+          return b.date - a.date;
+        });
+        break;
+      case "SCORE":
+        sortedFeedbacks = feedbacks.sort((a, b) => {
+          return b.rating - a.rating;
+        });
+        break;
+
+      default:
+        sortedFeedbacks = feedbacks;
+        break;
+    }
+    this.setState({ sortedFeedbacks: sortedFeedbacks });
+  };
+  filterCategoryFeedbacks = category => {
+    let feedbacks = [...this.props.feedbacks];
+    let filteredCategoryFeedbacks = feedbacks.filter(
+      item => item.category === category
+    );
+    this.setState({ filteredCategoryFeedbacks: filteredCategoryFeedbacks });
+  };
 
   render() {
-    const { cityName, setSelectedCity, setId, data, index} = this.props;
+    const { cityName, setSelectedCity, setId, data } = this.props;
     return (
       <div className="cityDiv">
         <div className="cityHeader">
           <div className="cHeaderLeft">
             <div className="flex">
               <h3>I'd like to get info on the city: </h3>    
-              <Selection
-                options={this.state.cityList}
-                setOption={setSelectedCity}
+              <SelectCity
                 classes={"selectCity"}
-              />  
+                cityList={this.props.allCities}
+                selection={this.setFilteredAcc}
+              />
             </div>    
-            {/* <h1>{cityName}CITY</h1>       */}
+            <h1>{cityName}</h1>      
           </div>
           <div className="cHeaderRight">
             <a href="#accomodation"> ACCOMODATION</a>
@@ -93,7 +124,7 @@ class CityInfo extends Component {
           iconDiv="accomodationStyle"
           setId={setId}
           id={9}
-          data={data}
+          data={this.state.filteredAcc}
         />
         <CityLifeTransportation
           title="Transportation"
@@ -121,25 +152,26 @@ class CityInfo extends Component {
                   clicked={this.modalOpenHandler}>                  
                     +
               </Button> 
-        <Modal
-          style={{ "z-index": 50 }}
-          show={this.state.modalShow}
-          clicked={this.modalClosedHandler}
-        >          
-          <ModalHeader
-            clicked={this.modalClosedHandler}
-            closeSpanClicked={this.modalClosedHandler}
-            title={"Add comment"}
-            save={"SAVE"}
-          />
-          {/* <TextArea label={"Your comment"} className="modalTxtArea" /> */}           
-          <ModalBodyFeedAndPOI
-            title1={"Feedback"}
-            title2={"POI"}
-            setOption={this.setSelectedCategory}
-          />
-         
-        </Modal>
+              <Modal
+                classes='containerModal'
+                style={{ "z-index": 50 }}
+                show={this.state.modalShow}
+                clicked={this.modalClosedHandler}
+              >          
+                <ModalHeader
+                  clicked={this.modalClosedHandler}
+                  closeSpanClicked={this.modalClosedHandler}
+                  title={"Add comment"}
+                  save={"SAVE"}
+                />
+                {/* <TextArea label={"Your comment"} className="modalTxtArea" /> */}           
+                <ModalBodyFeedAndPOI
+                  title1={"Feedback"}
+                  title2={"POI"}
+                  setOption={this.setSelectedCategory}
+                />
+              
+              </Modal>
                 <h3>SORT</h3>
                 <Selection
                   options={["LATEST", "DATE", "SCORE"]}
@@ -159,7 +191,9 @@ const mapStateToProps = state => {
   return {
     cityName: state.selectedCity,
     modalShow: state.modalShow,
-    allCities: state.cities
+    allCities: state.cities,
+    allAccommodations: state.accommodations,
+    allFeedbacks: state.feedbacks
   };
 };
 const mapDispatchToProps = dispatch => {
@@ -167,7 +201,7 @@ const mapDispatchToProps = dispatch => {
     setSelectedCity: city => dispatch(setSelectedCity(city)),
     modalOpen: () => dispatch({ type: actionTypes.MODAL_OPEN }),
     modalClose: () => dispatch({ type: actionTypes.MODAL_CLOSE }),
-    setCities: cities => dispatch(setCities(cities))
+    getCities: cities => dispatch(setCities(cities))
   };
 };
 

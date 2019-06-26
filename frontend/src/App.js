@@ -14,58 +14,28 @@ import { connect } from "react-redux";
 import * as actionTypes from "./store/actions/actions";
 import { logedOut } from "./store/actions/actions";
 import axios from "axios";
-// import AdminPanel from './containers/AdminPanel/AdminPanel'
+import { withRouter } from "react-router-dom";
 
 class App extends Component {
-  state = {
-    admin: true,
-    hotelId: "",
-    hotel: {
-      data: [
-        {
-          id: 1,
-          title: "Hotel Hilton",
-          // subtitle: "lallala",
-          text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia nisi animi maiores dolorem quos enim! Incidunt, doloremque! Mollitia, architecto nam facilis itaque eius voluptatem, asperiores quasi delectus necessitatibus tenetur assumenda?",
-          img: faker.fake("{{image.image}}"),
-          score: 9
-        }, 
-        {
-          id: 2,
-          title: "Hotel Hayat",
-          // subtitle: "lallala",
-          text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia nisi animi maiores dolorem quos enim! Incidunt, doloremque! Mollitia, architecto nam facilis itaque eius voluptatem, asperiores quasi delectus necessitatibus tenetur assumenda?",
-          img: faker.fake("{{image.image}}"),
-          score: 7
-        }, 
-        {
-          id: 3,
-          title: "Hotel Jugoslavija Zemun",
-          // subtitle: "lallala",
-          text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia nisi animi maiores dolorem quos enim! Incidunt, doloremque! Mollitia, architecto nam facilis itaque eius voluptatem, asperiores quasi delectus necessitatibus tenetur assumenda?",
-          img: faker.fake("{{image.image}}"),
-          score: 4
-        }
-    ]
-    },
-    cityList: ["Belgrade", "Paris", "London", "Surdulica", "Paramaribo"]
-  };
-
-  setHotelID = value => {
-    this.setState({ hotelId: value });
-  };
   logingOut = () => {
     let token = localStorage.getItem("token");
-    console.log(token);
+    
+
+
     axios({
       method: "post",
       url: "https://js1plus1-api.herokuapp.com/users/logout",
-      data: token
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
     }).then(res => {
       console.log(res);
       this.props.logOut();
+      this.props.history.push("/");
+     
     });
   };
+
   render() {
     let nav = null;
     if (this.props.isLogedIn) {
@@ -77,9 +47,9 @@ class App extends Component {
         />
       );
     }
-    console.log(this.state.hotelId);
+    
     return (
-      <div className="App">       
+      <div className="App">
         <Layout>
           <Router>
             {nav}
@@ -93,7 +63,7 @@ class App extends Component {
                 exact
                 path="/hotel"
                 render={props => (
-                  <Hotel {...props} data={this.state.hotel.data} />
+                  <Hotel {...props}  />
                 )}
               />
 
@@ -103,9 +73,7 @@ class App extends Component {
                 render={props => (
                   <CityInfo
                     {...props}
-                    setId={this.setHotelID}
-                    data={this.state.hotel.data}
-                    cityList={this.state.cityList}
+                    
                   />
                 )}
               />
@@ -132,4 +100,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(App);
+)(withRouter(App));

@@ -1,23 +1,23 @@
 import React, { Component } from "react";
 import "./Accomodation.scss";
-import Image from "../../UI/Image/Image";
-import Selection from '../../components/Select/Selection'
+import ShowHotel from '../../components/Select/ShowHotel'
+import { connect } from "react-redux";
+import * as actionTypes from "../../store/actions/actions";
+import { isTemplateElement } from "@babel/types";
 
-export default class Accomodation extends Component {
-  state = {
-    cityList: ["1", "2","3"]
-  }
+
+ class Accomodation extends Component {
   render() {
-    const { cityName, setSelectedCity, setId, data } = this.props;
+    let hotels = this.props.data.map((hotel,index) => <ShowHotel  key={index} data={hotel} /> )
     return (
       <div className="accomDiv">
-        {/* <div className="accomSelect">
+        <div className="accomSelect">
           <h3>Selecet accomodation komponenta</h3>
         </div>
         <div className="accomInfo">
           <div className="accomList">
             <div className="accomUnit">
-              <div className="accomListLeft">{"Unit komponenta"}</div>
+              <div className="accomListLeft">{hotels}</div>
               <div className="accomListRight">
                
               </div>
@@ -26,20 +26,26 @@ export default class Accomodation extends Component {
           <div className="accomMap">
             <h3>Accomodation map komponenta</h3>
           </div>
-        </div> */}
-        <div className="flex">
-          <h3>I'd like to get info on the city: </h3>
-          <Selection
-            options={this.state.cityList}
-            setOption={setSelectedCity}
-            classes={"selectCity"}
-          />
         </div>
-        <div className='accomodationContainer'>
-          
-        </div>
-
       </div>
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    data : state.accommodations
+  };
+};
+/*const mapDispatchToProps = dispatch => {
+  return {
+    setSelectedCity: city => dispatch(setSelectedCity(city)),
+    modalOpen: () => dispatch({ type: actionTypes.MODAL_OPEN }),
+    modalClose: () => dispatch({ type: actionTypes.MODAL_CLOSE }),
+    setCities: cities => dispatch(setCities(cities))
+  };
+};*/
+
+export default connect(
+  mapStateToProps
+)(Accomodation);

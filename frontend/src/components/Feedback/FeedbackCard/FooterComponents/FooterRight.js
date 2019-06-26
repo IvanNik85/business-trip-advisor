@@ -15,7 +15,7 @@ import Button from '../../../../UI/Button/Button'
 class FooterRight extends React.Component {
     state = {
         modalShow: false,
-        newModal: false,      
+        modalTextArea:false
     }
     modalOpenHandler = () => {
         this.setState({ modalShow: true });
@@ -23,9 +23,12 @@ class FooterRight extends React.Component {
     modalClosedHandler = () => {
         this.setState({ modalShow: false });
     };
-    modalOpenNew = () => {
-        this.setState({ newModal: true });
-      };
+    modalOpenHandler1 = () => {
+        this.setState({ modalShow: false,modalTextArea: true });
+    };
+    modalClosedHandler1 = () => {
+        this.setState({ modalTextArea: false });
+    };
     render() {
         const { img, name, date, commentTitle, comment, filter, moreComments } = this.props.data
         let additionalComments = moreComments.map(item => (
@@ -35,10 +38,11 @@ class FooterRight extends React.Component {
           ));
         return (
             <div>
+                
                 <a href="##" id="readMore" onClick={this.modalOpenHandler}>
                     READ MORE
                 </a>
-                <Modal
+                {/* <Backdrop
                     style={{ "z-index": 50 }}
                     show={this.state.modalShow}
                     clicked={this.modalClosedHandler}
@@ -60,26 +64,54 @@ class FooterRight extends React.Component {
                             <h3>Comments</h3>
                             <FooterLeft numComments = {moreComments.length}/>
                         </div>
-                        {/* <FeedbackMain data={this.props.data}>
-                            <CommentDate date={'2017-05-12'} />
-                        </FeedbackMain> */}
+                        
                         {additionalComments}
                         <Button classes={'addComment'} 
-                            clicked={this.modalOpenNew}>                  
+                            clicked={() => console.log("radi ikon klik")}>                  
                             +
-                        </Button>                        
+                        </Button> 
                     </ModalTextArea>  
-                </Modal>
+                </Backdrop> */}
+                
                 <Modal
-                    style={{ "z-index": this.props.index }}
-                    show={this.state.newModal}
-                    clicked={this.modalClosedHandler}
-                >
+                classes='containerModal'
+                style={{ "z-index": 50 }}
+                show={this.state.modalShow}
+                clicked={this.modalClosedHandler}
+                >  
+                    {/* <ModalTextArea> */}
+                        <ModalHeader
+                            clicked={this.modalClosedHandler}
+                            closeSpanClicked={this.modalClosedHandler}
+                            title={"City life feedback"}
+                        />
+                        <FeedbackMain data={this.props.data}>
+                            <Bar score="5.7" />
+                        </FeedbackMain>
+                        <FeedbackCardFooter>
+                            <CommentDate date={date} />
+                            <Icon fontSize={25} iconClass={filter} color={'color1'} />
+                        </FeedbackCardFooter>
+                        <div className="comments">
+                            <h3>Comments</h3>
+                            <FooterLeft numComments = {moreComments.length}/>
+                        </div>
+                        
+                        {additionalComments}
+                        <Button classes={'addComment'} 
+                            clicked={console.log('klik')}>                  
+                            +
+                        </Button> 
+                       
+                    {/* </ModalTextArea>   */}
+                </Modal>
+                <Modal>
                     <ModalHeader
-                    clicked={this.modalClosedHandler}
-                    closeSpanClicked={this.modalClosedHandler}
-                    title={"City life feedback"}
-                />
+                        clicked={this.modalClosedHandler}
+                        closeSpanClicked={this.modalClosedHandler}
+                        title={"City life feedback"}
+                    />
+                    <ModalTextArea /> 
                 </Modal>
             </div>
         )
