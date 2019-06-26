@@ -20,46 +20,13 @@ import store from "../../index";
 
 class CityInfo extends Component {
   state = {
-<<<<<<< HEAD
-    cityList: [],
-    accommodations: [],
-    filteredAcc: [],
-=======
     filteredAcc: [],
 
->>>>>>> 802bc0c5794237b1a02e9f7d622fdf7a73a615b8
     rewOption: ""
   };
 
   componentDidMount() {
-<<<<<<< HEAD
-    let token = localStorage.getItem("token");
-    axios({
-      method: "get",
-      url: "https://js1plus1-api.herokuapp.com/cities",
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    }).then(res => {
-      let cities = res.data;
-      this.props.setCities(cities);
-      let cityListNames = cities.map(item => item.name);
-      this.setState({ cityList: cityListNames });
-    });
-    axios({
-      method: "get",
-      url: "https://js1plus1-api.herokuapp.com/accommodations",
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    }).then(res => {
-      let accommodations = res.data;
-
-      this.setState({ accommodations: accommodations });
-    });
-=======
     store.dispatch(getAllaccommodations());
->>>>>>> 802bc0c5794237b1a02e9f7d622fdf7a73a615b8
   }
   setFilteredAcc = (val, id) => {
     this.props.setSelectedCity(val);
