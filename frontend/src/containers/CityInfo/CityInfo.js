@@ -12,11 +12,10 @@ import Selection from "../../components/Select/Selection";
 import CityLifeTransportation from "../../components/CityLifeTransportation/CityLifeTransportation";
 import Button from "../../UI/Button/Button";
 import SelectCity from "../CityInfo/SelectCity/SelectCity";
+import { getAllCities } from "../../store/actions/actions";
 import { getAllaccommodations } from "../../store/actions/actions";
 import { getAllfeedbacks } from "../../store/actions/actions";
 import store from "../../index";
-
-//const data = ["asdasdl", "kakakka", "kakakka"];
 
 class CityInfo extends Component {
   state = {
@@ -28,6 +27,7 @@ class CityInfo extends Component {
   };
 
   componentDidMount() {
+    store.dispatch(getAllCities());
     store.dispatch(getAllaccommodations());
     store.dispatch(getAllfeedbacks());
   }

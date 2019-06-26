@@ -13,7 +13,7 @@ import { getAllCities } from "./store/actions/actions";
 //for redux dev tools
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
-store.dispatch(getAllCities());
+
 export default store;
 
 const app = (
