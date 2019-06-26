@@ -1,32 +1,49 @@
 @import "../../index.scss";
 
 .accomDiv {
-  .accomSelect {
-    border: 1px solid black;
-  }
-  .accomInfo {
-    display: flex;
-    height: 100vh;
+  // .accomSelect {
+  //   border: 1px solid black;
+  // }
+  // .accomInfo {
+  //   display: flex;
+  //   height: 100vh;
 
-    .accomList {
-      border: 1px solid black;
-      flex: 2;
-      //   display: flex;
-      .accomUnit {
-        display: flex;
-        .accomListLeft {
-          border: 1px solid black;
-          flex: 2;
-        }
-        .accomListRight {
-          border: 1px solid black;
-          flex: 1;
-        }
-      }
-    }
-    .accomMap {
-      border: 1px solid black;
-      flex: 1;
-    }
-  }
+  //   .accomList {
+  //     border: 1px solid black;
+  //     flex: 2;
+  //     //   display: flex;
+  //     .accomUnit {
+  //       display: flex;
+  //       .accomListLeft {
+  //         border: 1px solid black;
+  //         flex: 2;
+  //       }
+  //       .accomListRight {
+  //         border: 1px solid black;
+  //         flex: 1;
+  //       }
+  //     }
+  //   }
+  //   .accomMap {
+  //     border: 1px solid black;
+  //     flex: 1;
+  //   }
+  //}
+
+
+
+
+
+}
+.accomDiv::after {
+	content: "";
+	background: url('../../images/panorama.jpg') no-repeat center;	
+	background-size: cover;
+	position: fixed;
+	opacity: 0.4;
+	top: 0; 
+	left: 0;
+	bottom: 0;
+	right: 0;	
+	z-index: -1;
 }

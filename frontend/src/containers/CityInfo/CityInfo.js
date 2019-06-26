@@ -11,6 +11,10 @@ import ShowHotel from "../../components/Select/ShowHotel";
 import Selection from "../../components/Select/Selection";
 import CityLifeTransportation from "../../components/CityLifeTransportation/CityLifeTransportation";
 import Button from "../../UI/Button/Button";
+import Modal from "../../UI/Modal/Modal"
+import ModalHeader from "../../UI/Modal/ModalHeader/ModalHeader"
+import ModalBodyFeedAndPOI from "../../UI/Modal/ModalBodyFeedPoi/ModalBodyFeedPoi"
+import ModalTextArea from "../../UI/Modal/ModalTextArea/ModalTextArea"
 
 const data = ["asdasdl", "kakakka", "kakakka"];
 
@@ -18,7 +22,7 @@ class CityInfo extends Component {
   state = {
     cityList: [],
     accomodation: [],
-
+    modalShow: false,
     rewOption: ""
   };
 
@@ -53,8 +57,16 @@ class CityInfo extends Component {
     this.setState({ rewOption: val });
   };
 
+  modalOpenHandler = () => {
+    this.setState({ modalShow: true });
+  };
+
+  modalClosedHandler = () => {
+    this.setState({ modalShow: false });
+  };
+
   render() {
-    const { cityName, setSelectedCity, setId, data } = this.props;
+    const { cityName, setSelectedCity, setId, data, index} = this.props;
     return (
       <div className="cityDiv">
         <div className="cityHeader">
@@ -106,9 +118,28 @@ class CityInfo extends Component {
                 clicked={() => console.log("radi ikon klik")}
               />              */}
               <Button classes={'addComment'} 
-                  clicked={() => console.log("radi ikon klik")}>                  
+                  clicked={this.modalOpenHandler}>                  
                     +
               </Button> 
+        <Modal
+          style={{ "z-index": 50 }}
+          show={this.state.modalShow}
+          clicked={this.modalClosedHandler}
+        >          
+          <ModalHeader
+            clicked={this.modalClosedHandler}
+            closeSpanClicked={this.modalClosedHandler}
+            title={"Add comment"}
+            save={"SAVE"}
+          />
+          {/* <TextArea label={"Your comment"} className="modalTxtArea" /> */}           
+          <ModalBodyFeedAndPOI
+            title1={"Feedback"}
+            title2={"POI"}
+            setOption={this.setSelectedCategory}
+          />
+         
+        </Modal>
                 <h3>SORT</h3>
                 <Selection
                   options={["LATEST", "DATE", "SCORE"]}
