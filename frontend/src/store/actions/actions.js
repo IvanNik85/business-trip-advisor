@@ -9,6 +9,7 @@ export const MODAL_CLOSE = "MODAL_CLOSE";
 export const SET_USER_NAME = "SET_USER_NAME";
 export const SET_CITIES = "SET_CITIES";
 export const SET_ACCOMMODATIONS = "SET_ACCOMMODATIONS";
+export const SET_FEEDBACKS = "SET_FEEDBACKS";
 //action creators
 
 export const logedIn = () => {
@@ -53,6 +54,12 @@ export const setAccommodations = accommodations => {
     accommodations: accommodations
   };
 };
+export const setFeedbacks = feedbacks => {
+  return {
+    type: SET_FEEDBACKS,
+    feedbacks: feedbacks
+  };
+};
 
 //auth token
 const token = localStorage.getItem("token");
@@ -83,5 +90,18 @@ export const getAllaccommodations = () => {
     });
 
     dispatch(setAccommodations(res.data));
+  };
+};
+export const getAllfeedbacks = () => {
+  return async dispatch => {
+    const res = await axios({
+      method: "get",
+      url: "https://js1plus1-api.herokuapp.com/feedbacks",
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    dispatch(setFeedbacks(res.data));
   };
 };
