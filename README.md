@@ -4,5 +4,5 @@ through feedback and helpful tips and tricks from peers.
 
 # Main project branches
 Project is divided in two main branches:
- -React frontend app (View, Controller) -> frontend-master
- -Node.js & MongoDB backend REST API (Controller, Model) -> backend-master
+-React frontend app (View, Controller) -> frontend-master
+-Node.js & MongoDB backend REST API (Controller, Model) -> backend-master
